@@ -1,0 +1,29 @@
+[
+  {
+    "rule": "L019",
+    "severity": "error",
+    "file": "modules/beta/contracts.md",
+    "line": 10,
+    "id": "alpha.Widget.colour",
+    "message": "field alpha.Widget.colour sits under beta.Order",
+    "fix": "rename it beta.Order.colour, or move it under its entity"
+  },
+  {
+    "rule": "L012",
+    "severity": "warning",
+    "file": "modules/beta/contracts.md",
+    "line": 13,
+    "id": "alpha.Gizmo",
+    "message": "nothing references alpha.Gizmo",
+    "fix": "reference it from the features that read or write it, or deprecate it"
+  },
+  {
+    "rule": "L019",
+    "severity": "error",
+    "file": "modules/beta/contracts.md",
+    "line": 13,
+    "id": "alpha.Gizmo",
+    "message": "alpha.Gizmo is defined in the beta contracts file",
+    "fix": "move it to modules/alpha/contracts.md, or rename it beta.Gizmo"
+  }
+]

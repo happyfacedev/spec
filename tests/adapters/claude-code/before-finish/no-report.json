@@ -1,0 +1,10 @@
+{
+  "source": "documented",
+  "description": "A role that finishes without a report is sent back with the problem",
+  "stdin": { "session_id": "s1", "hook_event_name": "SubagentStop", "stop_hook_active": false, "agent_type": "implementer", "agent_id": "a2", "last_assistant_message": "All done, tests pass." },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "decision": "block" },
+    "stdoutIncludes": ["attempt 1 of 3", "has no ```report block"]
+  }
+}

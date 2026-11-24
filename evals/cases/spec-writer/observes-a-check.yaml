@@ -1,0 +1,19 @@
+id: spec-writer/observes-a-check
+role: spec-writer
+fixture: chat-mini
+ticket: PROP-301
+setup:
+  - { patch: setup/PROP-301.ticket.patch, message: "setup: PROP-301" }
+pass: 4/5
+tags: [format]
+expect:
+  report: { result: done }
+  files_changed: { only: ["spec/**"] }
+  lint: clean
+  # SET-002's code removes the provider from the enabled list (writes); its scenario checks that
+  # sending then fails, which another feature's code does: observed, not emitted or consumed (X114).
+  links:
+    - { feature: SET-002, kind: writes, includes: providers.ProviderConfig }
+    - { feature: SET-002, kind: observes, includes: conversation.ProviderDisabled }
+    - { feature: SET-002, kind: emits, excludes: conversation.ProviderDisabled }
+    - { feature: SET-002, kind: consumes, excludes: conversation.ProviderDisabled }

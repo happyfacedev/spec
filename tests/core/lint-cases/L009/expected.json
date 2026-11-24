@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L009",
+    "severity": "warning",
+    "file": "modules/alpha/contracts.md",
+    "line": 3,
+    "id": "alpha.Widget",
+    "message": "8 features reference alpha.Widget as a whole",
+    "fix": "reference the fields each feature uses, such as alpha.Widget.<field>"
+  }
+]

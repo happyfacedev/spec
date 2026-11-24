@@ -1,0 +1,8 @@
+feature: CNV-001
+probes:
+  - q: The active provider is not enabled and the user sends a message. What happens?
+    options: ["The message goes to the fallback provider", "The send fails with the error ProviderDisabled", "The message is queued until the provider is enabled"]
+    answer: The send fails with the error ProviderDisabled    # CNV-001/S2
+  - q: After that failed send, how many messages does the conversation hold?
+    options: ["One: the user's message", "None were added", "Two: the user's message and an error message"]
+    answer: None were added                                     # CNV-001/S2

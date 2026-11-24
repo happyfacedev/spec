@@ -1,0 +1,43 @@
+{
+  "name": "spec-skill",
+  "version": "0.1.0",
+  "description": "Spec skill PoC: a project spec as a graph of small units, plus the spec CLI.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "bin": {
+    "spec": "dist/spec"
+  },
+  "scripts": {
+    "build": "tsx scripts/build.ts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p fixtures/chat-mini",
+    "lint": "eslint . && tsx scripts/gen-role-manifest.ts --check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "bench": "npm run build && tsx scripts/bench.ts",
+    "guide": "tsx scripts/field-guide.ts",
+    "spec": "tsx src/cli/main.ts"
+  },
+  "dependencies": {
+    "yaml": "2.9.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/mdast": "4.0.4",
+    "@types/node": "22.20.5",
+    "esbuild": "0.28.2",
+    "eslint": "10.13.0",
+    "remark-frontmatter": "5.0.0",
+    "remark-parse": "11.0.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.1",
+    "unified": "11.0.5",
+    "vitest": "5.0.5"
+  }
+}

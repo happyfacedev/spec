@@ -1,0 +1,9 @@
+--- a/lib/cart.dart
++++ b/lib/cart.dart
+@@ -28,5 +28,5 @@
+   }
+ 
+   /// cart.RemoveItem
+-  void remove(String name) => throw UnimplementedError('SPEC-STUB PROP-101');
++  void remove(String name) => _lines.removeWhere((l) => l.name == name);
+ }

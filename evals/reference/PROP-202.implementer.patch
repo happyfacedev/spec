@@ -1,0 +1,12 @@
+--- a/src/app.ts
++++ b/src/app.ts
+@@ -73,4 +73,9 @@
+   maskedKey(providerId: ProviderId): string | null {
+     return maskedKey(this.state, providerId);
+   }
++
++  /** settings.PickerProviders: the enabled providers, alphabetical (PROP-202#Q1 default). */
++  pickerProviders(): ProviderId[] {
++    return [...this.state.config.enabled].sort();
++  }
+ }

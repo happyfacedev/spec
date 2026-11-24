@@ -1,0 +1,11 @@
+{
+  "source": "documented",
+  "description": "A main session starts with short workflow guidance and queue counts",
+  "stdin": { "session_id": "s1", "transcript_path": "/tmp/t.jsonl", "cwd": "$REPO", "hook_event_name": "SessionStart", "source": "startup" },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "hookEventName": "SessionStart" } },
+    "stdoutIncludes": ["every change to behaviour, spec or tests goes through a ticket", "/spec:feature", ".spec/bin/spec queue", "7 ready", "1 waiting for a person"],
+    "stdoutEmpty": false
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "rule": "L010",
+    "severity": "error",
+    "file": "modules/alpha/features/ALP-001-make-a-widget.md",
+    "line": 11,
+    "id": "ALP-001#Q1",
+    "message": "ALP-001#Q1 cites INV-001, so it is a blocker",
+    "fix": "set kind: blocker"
+  },
+  {
+    "rule": "L010",
+    "severity": "error",
+    "file": "tickets/TASK-001.md",
+    "line": 11,
+    "id": "TASK-001#Q1",
+    "message": "preference TASK-001#Q1 has no default",
+    "fix": "add the default work proceeds on, or make it a blocker"
+  }
+]

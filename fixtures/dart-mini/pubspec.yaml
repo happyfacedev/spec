@@ -1,0 +1,7 @@
+name: cart
+description: A shopping cart, the spec system's sample for a compiled language.
+publish_to: none
+environment:
+  sdk: ^3.5.0
+dev_dependencies:
+  test: any

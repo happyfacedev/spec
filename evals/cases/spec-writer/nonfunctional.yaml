@@ -1,0 +1,15 @@
+id: spec-writer/nonfunctional
+role: spec-writer
+fixture: chat-mini
+ticket: PROP-304
+setup:
+  - { patch: setup/PROP-304.ticket.patch, message: "setup: PROP-304" }
+pass: 4/5
+tags: [format]
+expect:
+  report: { result: done }
+  files_changed: { only: ["spec/**"] }
+  lint: clean
+  # A latency budget no scenario can show: an invariant that says how it is checked (X125).
+  new_invariant: { shown_by: true }
+  lint_never: [L025]

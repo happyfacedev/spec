@@ -1,0 +1,14 @@
+{
+  "source": "documented",
+  "description": "A role delegated without a ticket ID is denied: delegation carries the ID only (D13)",
+  "stdin": {
+    "session_id": "s1", "cwd": "$REPO", "hook_event_name": "PreToolUse",
+    "tool_name": "Agent",
+    "tool_input": { "description": "Fix", "prompt": "please fix the fallback bug", "subagent_type": "implementer" }
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "permissionDecision": "deny" } },
+    "stdoutIncludes": ["Delegate implementer with a ticket ID as the whole message"]
+  }
+}

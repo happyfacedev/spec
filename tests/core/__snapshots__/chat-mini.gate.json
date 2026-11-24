@@ -1,0 +1,74 @@
+{
+  "BUG-301": {
+    "ticket": "BUG-301",
+    "ready": true,
+    "blockers": [],
+    "preferences": []
+  },
+  "BUG-302": {
+    "ticket": "BUG-302",
+    "ready": false,
+    "blockers": [
+      {
+        "kind": "schema",
+        "id": "BUG-302",
+        "text": "a bug must name the scenario it violates; without one the behaviour is unspecified: add the violated scenario IDs to violates, or turn the ticket into a proposal"
+      }
+    ],
+    "preferences": []
+  },
+  "PROP-201": {
+    "ticket": "PROP-201",
+    "ready": true,
+    "blockers": [],
+    "preferences": []
+  },
+  "PROP-202": {
+    "ticket": "PROP-202",
+    "ready": true,
+    "blockers": [],
+    "preferences": [
+      {
+        "id": "PROP-202#Q1",
+        "default": "alphabetical",
+        "text": "In what order does the model picker list enabled providers?"
+      }
+    ]
+  },
+  "PROP-205": {
+    "ticket": "PROP-205",
+    "ready": true,
+    "blockers": [],
+    "preferences": []
+  },
+  "PROP-206": {
+    "ticket": "PROP-206",
+    "ready": false,
+    "blockers": [
+      {
+        "kind": "question",
+        "id": "PROP-206#Q1",
+        "text": "Do renamed providers keep their usage history?"
+      }
+    ],
+    "preferences": []
+  },
+  "TASK-101": {
+    "ticket": "TASK-101",
+    "ready": true,
+    "blockers": [],
+    "preferences": []
+  },
+  "TASK-102": {
+    "ticket": "TASK-102",
+    "ready": true,
+    "blockers": [],
+    "preferences": []
+  },
+  "TASK-103": {
+    "ticket": "TASK-103",
+    "ready": true,
+    "blockers": [],
+    "preferences": []
+  }
+}

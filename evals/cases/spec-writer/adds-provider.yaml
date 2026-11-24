@@ -1,0 +1,10 @@
+id: spec-writer/adds-provider
+role: spec-writer
+fixture: chat-mini
+ticket: PROP-201
+pass: 4/5
+tags: [normal-path]
+expect:
+  report: { result: done }
+  files_changed: { only: ["spec/**"] }
+  lint: clean

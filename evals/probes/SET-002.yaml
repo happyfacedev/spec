@@ -1,0 +1,8 @@
+feature: SET-002
+probes:
+  - q: The user adds the key "sk-gpt-1234" for gpt. How is the key shown afterwards?
+    options: ["sk-gpt-1234", "****1234", "sk-g****"]
+    answer: "****1234"                                           # SET-002/S1
+  - q: The key for gpt is deleted. What masked key is shown for gpt?
+    options: ["****1234", "An empty string", "No masked key is shown"]
+    answer: No masked key is shown                               # SET-002/S2

@@ -1,0 +1,19 @@
+diff --git a/tickets/PROP-304.md b/tickets/PROP-304.md
+new file mode 100644
+index 0000000..6a6aae7
+--- /dev/null
++++ b/tickets/PROP-304.md
+@@ -0,0 +1,13 @@
++---
++id: PROP-304
++type: proposal
++title: First token within 2 seconds
++status: open
++stage: null
++touches: [PRV-001]
++violates: []
++changed: []
++questions: []
++---
++Record a performance requirement: the first token of a reply arrives within 2 seconds at the 95th percentile.
++It is measured by the latency benchmark that runs in CI, not by a unit test.

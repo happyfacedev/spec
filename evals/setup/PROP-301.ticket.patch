@@ -1,0 +1,19 @@
+diff --git a/tickets/PROP-301.md b/tickets/PROP-301.md
+new file mode 100644
+index 0000000..84e63d7
+--- /dev/null
++++ b/tickets/PROP-301.md
+@@ -0,0 +1,13 @@
++---
++id: PROP-301
++type: proposal
++title: Deleting a key disables its provider
++status: open
++stage: null
++touches: [SET-002]
++violates: []
++changed: []
++questions: []
++---
++When the user deletes the API key of a provider (SET-002), that provider is also removed from the enabled providers.
++Show it with a scenario: after deleting the key for "gpt", "gpt" is no longer enabled, and sending a message to it then fails with conversation.ProviderDisabled.

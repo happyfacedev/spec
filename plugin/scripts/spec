@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+const mod = process.getBuiltinModule('node:module');
+mod.enableCompileCache?.();
+mod.createRequire(process.getBuiltinModule('node:fs').realpathSync(process.argv[1]))('./spec.cjs');

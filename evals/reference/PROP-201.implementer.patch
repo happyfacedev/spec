@@ -1,0 +1,8 @@
+--- a/src/providers/config.ts
++++ b/src/providers/config.ts
+@@ -1,4 +1,4 @@
+-export const PROVIDER_IDS = ['claude', 'gpt', 'mistral'] as const;
++export const PROVIDER_IDS = ['claude', 'gpt', 'mistral', 'gemini'] as const;
+ export type ProviderId = (typeof PROVIDER_IDS)[number];
+ 
+ /** providers.ProviderConfig */

@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L026",
+    "severity": "warning",
+    "file": "modules/alpha/features/ALP-001-make-a-widget.md",
+    "line": 26,
+    "id": "ALP-001",
+    "message": "ALP-001 mentions BET-099, which does not exist",
+    "fix": "correct the ID, or write the name without an ID"
+  }
+]

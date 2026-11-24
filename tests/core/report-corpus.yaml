@@ -1,0 +1,954 @@
+# check-report corpus. Each case: the ticket and the stage it is in, the working-tree state, the
+# role's final message, and the exact problems expected (substrings, in order; [] means ok).
+# tests: pass | fail | none, or a list of { name, status } for tester stages.
+
+- name: PIP-004/S1 A valid stage
+  ticket: TASK-101
+  stage: implementer
+  paths: [src/providers/select.ts, src/providers/stream.ts]
+  tests: pass
+  message: |
+    Extracted provider selection.
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: Extracted provider selection into src/providers/select.ts
+    changed: [PRV-001/S1, PRV-002/S1]
+    ```
+  expect: []
+
+- name: spec-writer done, spec files only
+  ticket: PROP-201
+  stage: spec-writer
+  paths: [spec/modules/providers/contracts.md]
+  message: |
+    ```report
+    role: spec-writer
+    ticket: PROP-201
+    result: done
+    summary: Added gemini to ProviderId
+    changed: [providers.ProviderConfig]
+    checklist:
+      - { item: C1, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C2, outcome: na, reason: "No environment axes apply in this fixture." }
+      - { item: C3, outcome: na, reason: "No shared state is under test in this fixture." }
+      - { item: C4, outcome: na, reason: "No trust boundary is under test in this fixture." }
+      - { item: C5, outcome: na, reason: "No unknown input is under test in this fixture." }
+      - { item: C6, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C8, outcome: na, reason: "No unverified external fact applies in this fixture." }
+    ```
+  expect: []
+
+- name: reviewer approves with no changes
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor
+    verdict: approve
+    ```
+  expect: []
+
+- name: PIP-004/S16 A reviewer asks for changes citing an invariant
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: The new debug log prints the API key
+    verdict: changes
+    findings:
+      - { cites: [INV-002, PRV-001/S3], text: "stream.ts logs the key", class: C4 }
+    ```
+  expect: []
+
+- name: PIP-004/S22 Every review finding names its class
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: The new debug log prints the API key
+    verdict: changes
+    findings:
+      - { cites: [INV-002, PRV-001/S3], text: "stream.ts logs the key" }
+    ```
+  expect: ['finding "stream.ts logs the key" has no class; add class: one of C1 to C9, or other']
+
+- name: PIP-004/S18 An approval that names a gap is refused
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor, but the build does not write the skill's bundle
+    verdict: approve
+    ```
+  expect: ["an approval names a gap; give changes, or reword if it is not one"]
+
+- name: PIP-004/S18 A gap in a finding of an approval is refused too
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor
+    verdict: approve
+    findings:
+      - { cites: [PRV-001/S3], text: "A TODO is left in select.ts", class: C9 }
+    ```
+  expect: ["an approval names a gap; give changes, or reword if it is not one"]
+
+- name: PIP-004/S18 The same words in a changes verdict are a finding
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: The fallback is missing
+    verdict: changes
+    findings:
+      - { cites: [PRV-001/S3], text: "select.ts does not fall back", class: C6 }
+    ```
+  expect: []
+
+- name: PIP-004/S18 A finding that says Follow-up only later in its text is checked
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor, every checklist item holds
+    verdict: approve
+    findings:
+      - { cites: [PRV-001/S3], text: "See the Follow-up: the select.ts TODO remains", class: C9 }
+    ```
+  expect: ["an approval names a gap; give changes, or reword if it is not one"]
+
+- name: PIP-004/S29 A Follow-up finding on an approval is not checked for gap words
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor, every checklist item holds
+    verdict: approve
+    findings:
+      - { cites: [PRV-001/S3], text: "Follow-up: this unusual DTD case does not block approval.", class: C9 }
+    ```
+  expect: []
+
+- name: PIP-004/S29 A Follow-up finding that holds TODO still passes an approval
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor, every checklist item holds
+    verdict: approve
+    findings:
+      - { cites: [PRV-001/S3], text: "Follow-up: TODO tidy the log wording", class: C9 }
+    ```
+  expect: []
+
+- name: PIP-004/S29 A plain finding that names a gap is refused beside a Follow-up finding
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor, every checklist item holds
+    verdict: approve
+    findings:
+      - { cites: [PRV-001/S3], text: "Follow-up: this unusual DTD case does not block approval.", class: C9 }
+      - { cites: [PRV-001/S3], text: "The retry path is missing a test", class: C7 }
+    ```
+  expect: ["an approval names a gap; give changes, or reword if it is not one"]
+
+- name: PIP-004/S29 A gap in the summary is refused beside a Follow-up finding
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor, but the build does not write the skill's bundle
+    verdict: approve
+    findings:
+      - { cites: [PRV-001/S3], text: "Follow-up: this unusual DTD case does not block approval.", class: C9 }
+    ```
+  expect: ["an approval names a gap; give changes, or reword if it is not one"]
+
+- name: PIP-004/S29 A Follow-up finding marked spec is refused on an approval
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor, every checklist item holds
+    verdict: approve
+    findings:
+      - { cites: [PRV-001/S3], text: "Follow-up: this unusual DTD case does not block approval.", class: C9, spec: true }
+    ```
+  expect: ["a finding marked spec: true needs verdict changes"]
+
+- name: implementer applies the ticket's preference and reports it
+  ticket: PROP-202
+  stage: implementer
+  paths: [src/settings/picker.ts]
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: PROP-202
+    result: done
+    summary: Model picker lists enabled providers
+    assumed:
+      - { question: PROP-202#Q1, value: alphabetical }
+    ```
+  expect: []
+
+- name: implementer reports a new default it applied mid-work
+  ticket: TASK-101
+  stage: implementer
+  paths: [src/providers/select.ts]
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: Extracted selection
+    assumed:
+      - { new: "Name of the new module", value: select.ts }
+    ```
+  expect: []
+
+- name: implementer stops on a spec gap with a clean tree
+  ticket: TASK-102
+  stage: implementer
+  message: |
+    A task may not change a contract.
+    ```report
+    role: implementer
+    ticket: TASK-102
+    result: blocked
+    summary: Needs a new field on conversation.Message.meta
+    blockers:
+      - { text: "conversation.Message.meta has no field for the provider", cites: [conversation.Message.meta] }
+    ```
+  expect: []
+
+- name: PIP-006/S2 A bug's test fails before the fix
+  ticket: BUG-301
+  stage: tester
+  paths: [tests/PRV-002.test.ts]
+  tests:
+    - { name: PRV-002/S1 Fallback enabled, status: passed }
+    - { name: PRV-002/S2 Fallback disabled, status: passed }
+    - { name: PRV-002/S3 Fallback provider also rate-limits, status: failed }
+    - { name: PRV-002/S4 Fallback provider not enabled, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: BUG-301
+    result: done
+    summary: Added the PRV-002/S3 test; it fails on main
+    changed: [PRV-002/S3]
+    mutations:
+      - { scenario: PRV-002/S3, wrong: "falls back to a provider that is also rate-limited" }
+    ```
+  expect: []
+
+- name: no report block
+  ticket: TASK-101
+  stage: implementer
+  message: |
+    All done!
+  expect: [has no ```report block]
+
+- name: two report blocks
+  ticket: TASK-101
+  stage: implementer
+  message: |
+    ```report
+    role: implementer
+    ```
+    ```report
+    role: implementer
+    ```
+  expect: [has 2 report blocks]
+
+- name: report is not YAML
+  ticket: TASK-101
+  stage: implementer
+  message: |
+    ```report
+    role: [implementer
+    ```
+  expect: [not valid YAML]
+
+- name: report does not match the schema
+  ticket: TASK-101
+  stage: implementer
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: finished
+    summary: x
+    ```
+  expect: [report result]
+
+- name: PIP-004/S4 The report names another role
+  ticket: TASK-101
+  stage: implementer
+  paths: [src/a.ts]
+  tests: pass
+  message: |
+    ```report
+    role: tester
+    ticket: TASK-101
+    result: done
+    summary: x
+    ```
+  # Path rules apply to the stage that is running, not to the role the report claims.
+  expect: [says role tester]
+
+- name: PIP-004/S5 The report names another ticket
+  ticket: TASK-101
+  stage: implementer
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-103
+    result: done
+    summary: x
+    ```
+  expect: [is for TASK-103]
+
+- name: PIP-004/S11 A blocker may cite its own ticket and its questions
+  ticket: TASK-102
+  stage: implementer
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-102
+    result: blocked
+    summary: Needs a new meta key
+    blockers: [{ text: "meta has no key for the provider", cites: [conversation.Message.meta, TASK-102] }]
+    ```
+  expect: []
+
+- name: PIP-004/S7 Blocked needs a blocker
+  ticket: TASK-102
+  stage: implementer
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-102
+    result: blocked
+    summary: stuck
+    ```
+  expect: [needs at least one blocker]
+
+- name: PIP-004/S8 A blocked stage may leave its changes in the tree
+  ticket: TASK-102
+  stage: implementer
+  paths: [src/conversation/message.ts]
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-102
+    result: blocked
+    summary: stuck
+    blockers: [{ text: needs a field, cites: [conversation.Message.meta] }]
+    ```
+  expect: []
+
+- name: PIP-004/S8 A blocked stage may leave its changes in the tree, or none
+  ticket: TASK-102
+  stage: implementer
+  paths: []
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-102
+    result: blocked
+    summary: stuck
+    blockers: [{ text: needs a field, cites: [conversation.Message.meta] }]
+    ```
+  expect: []
+
+- name: PIP-004/S9 Done lists no blockers
+  ticket: TASK-101
+  stage: implementer
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    blockers: [{ text: hmm, cites: [] }]
+    ```
+  expect: [cannot list blockers]
+
+- name: PIP-004/S10 Every ID the report names exists
+  ticket: TASK-101
+  stage: implementer
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    changed: [PRV-001/S9]
+    ```
+  expect: ["PRV-001/S9, which does not exist"]
+
+- name: PIP-004/S12 An assumed question must be an open preference in scope
+  ticket: TASK-101
+  stage: implementer
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    assumed: [{ question: PROP-202#Q1, value: alphabetical }]
+    ```
+  expect: [PROP-202#Q1 is not an open preference of TASK-101]
+
+- name: implementer changes a spec file
+  ticket: TASK-101
+  stage: implementer
+  paths: [src/a.ts, spec/modules/providers/contracts.md]
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    ```
+  expect: [never changes spec files]
+
+- name: spec-writer changes code
+  ticket: PROP-201
+  stage: spec-writer
+  paths: [spec/modules/providers/contracts.md, src/providers/config.ts]
+  message: |
+    ```report
+    role: spec-writer
+    ticket: PROP-201
+    result: done
+    summary: x
+    checklist:
+      - { item: C1, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C2, outcome: na, reason: "No environment axes apply in this fixture." }
+      - { item: C3, outcome: na, reason: "No shared state is under test in this fixture." }
+      - { item: C4, outcome: na, reason: "No trust boundary is under test in this fixture." }
+      - { item: C5, outcome: na, reason: "No unknown input is under test in this fixture." }
+      - { item: C6, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C8, outcome: na, reason: "No unverified external fact applies in this fixture." }
+    ```
+  expect: [changes spec files only; revert src/providers/config.ts]
+
+- name: tester changes code under test
+  ticket: BUG-301
+  stage: tester
+  paths: [tests/PRV-002.test.ts, src/providers/fallback.ts]
+  tests:
+    - { name: PRV-002/S1 a, status: passed }
+    - { name: PRV-002/S2 a, status: passed }
+    - { name: PRV-002/S3 a, status: failed }
+    - { name: PRV-002/S4 a, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: BUG-301
+    result: done
+    summary: x
+    mutations:
+      - { scenario: PRV-002/S3, wrong: "falls back to a provider that is also rate-limited" }
+    ```
+  expect: [changes test files only; revert src/providers/fallback.ts]
+
+- name: reviewer edits a file
+  ticket: TASK-101
+  stage: reviewer
+  paths: [src/a.ts]
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: x
+    verdict: approve
+    ```
+  expect: [the reviewer edits no files]
+
+- name: protected test file deleted (the PROP-205 trap)
+  ticket: PROP-205
+  stage: implementer
+  paths: [src/conversation/copy.ts, tests/SET-002.test.ts]
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: PROP-205
+    result: done
+    summary: Added copy; deleted the flaky test as the ticket asked
+    ```
+  expect: ["on a proposal the tests are the tester's", "protected files may not change: revert tests/SET-002.test.ts"]
+
+- name: PIP-006/S4 A proposal's new behaviour starts red
+  ticket: PROP-201
+  stage: tester
+  paths: [tests/PRV-001.test.ts, tests/SET-001.test.ts]
+  new_scenarios: [PRV-001/S4, SET-001/S4]
+  tests:
+    - { name: PRV-001/S1 a, status: passed }
+    - { name: PRV-001/S2 a, status: passed }
+    - { name: PRV-001/S3 a, status: passed }
+    - { name: PRV-001/S4 Streams from gemini, status: failed }
+    - { name: SET-001/S1 a, status: passed }
+    - { name: SET-001/S2 a, status: passed }
+    - { name: SET-001/S3 a, status: passed }
+    # Enabling gemini already works at runtime: one new scenario may pass, as long as one fails.
+    - { name: SET-001/S4 Enable gemini, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: PROP-201
+    result: done
+    summary: Tests for PRV-001/S4 and SET-001/S4; S4 of PRV-001 fails until gemini streams
+    mutations:
+      - { scenario: PRV-001/S4, wrong: "streams from the first enabled provider, not the active one" }
+      - { scenario: SET-001/S4, wrong: "enables gemini without saving its key" }
+    ```
+  expect: []
+
+- name: PIP-006/S5 A proposal whose new tests all pass is refused
+  ticket: PROP-201
+  stage: tester
+  paths: [tests/PRV-001.test.ts, tests/SET-001.test.ts]
+  new_scenarios: [PRV-001/S4, SET-001/S4]
+  tests:
+    - { name: PRV-001/S1 a, status: passed }
+    - { name: PRV-001/S2 a, status: passed }
+    - { name: PRV-001/S3 a, status: passed }
+    - { name: PRV-001/S4 a, status: passed }
+    - { name: SET-001/S1 a, status: passed }
+    - { name: SET-001/S2 a, status: passed }
+    - { name: SET-001/S3 a, status: passed }
+    - { name: SET-001/S4 a, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: PROP-201
+    result: done
+    summary: x
+    mutations:
+      - { scenario: PRV-001/S4, wrong: "streams from the first enabled provider, not the active one" }
+      - { scenario: SET-001/S4, wrong: "enables gemini without saving its key" }
+    ```
+  expect: [passes on the current code; tests come before the code]
+
+- name: PIP-006/S6 A new scenario without a test
+  ticket: PROP-201
+  stage: tester
+  paths: [tests/PRV-001.test.ts]
+  new_scenarios: [PRV-001/S4, SET-001/S4]
+  tests:
+    - { name: PRV-001/S1 a, status: passed }
+    - { name: PRV-001/S2 a, status: passed }
+    - { name: PRV-001/S3 a, status: passed }
+    - { name: PRV-001/S4 a, status: failed }
+    - { name: SET-001/S1 a, status: passed }
+    - { name: SET-001/S2 a, status: passed }
+    - { name: SET-001/S3 a, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: PROP-201
+    result: done
+    summary: x
+    mutations:
+      - { scenario: PRV-001/S4, wrong: "streams from the first enabled provider, not the active one" }
+      - { scenario: SET-001/S4, wrong: "enables gemini without saving its key" }
+    ```
+  expect: [no test covers SET-001/S4]
+
+- name: implementer on a proposal edits the tester's test
+  ticket: PROP-201
+  stage: implementer
+  paths: [src/providers/config.ts, tests/PRV-001.test.ts]
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: PROP-201
+    result: done
+    summary: x
+    ```
+  expect: [the tests are the tester's and the implementer changes code only; revert tests/PRV-001.test.ts]
+
+- name: PIP-006/S11 A tester's stub marked SPEC-STUB is accepted
+  ticket: PROP-205
+  stage: tester
+  paths: [tests/CNV-001.test.ts, src/app.ts]
+  new_scenarios: [CNV-001/S3]
+  code_changes:
+    - path: src/app.ts
+      hunks:
+        - added: ["  copyMessage(messageId: string): string {", "    throw new Error('SPEC-STUB PROP-205');", "  }"]
+  tests:
+    - { name: CNV-001/S1 a, status: passed }
+    - { name: CNV-001/S2 a, status: passed }
+    - { name: CNV-001/S3 Copy a message, status: failed }
+  message: |
+    ```report
+    role: tester
+    ticket: PROP-205
+    result: done
+    summary: Test for CNV-001/S3, with a stub for ChatApp.copyMessage
+    mutations:
+      - { scenario: CNV-001/S3, wrong: "copies the oldest message instead of the chosen one" }
+    ```
+  expect: []
+
+- name: PIP-006/S12 A tester's code change without the marker is refused
+  ticket: PROP-205
+  stage: tester
+  paths: [tests/CNV-001.test.ts, src/app.ts]
+  new_scenarios: [CNV-001/S3]
+  code_changes:
+    - path: src/app.ts
+      hunks:
+        - added: ["  copyMessage(messageId: string): string {", "    return this.state.messages.find((m) => m.id === messageId)?.content ?? '';", "  }"]
+  tests:
+    - { name: CNV-001/S1 a, status: passed }
+    - { name: CNV-001/S2 a, status: passed }
+    - { name: CNV-001/S3 Copy a message, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: PROP-205
+    result: done
+    summary: x
+    mutations:
+      - { scenario: CNV-001/S3, wrong: "copies the oldest message instead of the chosen one" }
+    ```
+  expect: ["src/app.ts changes code without the SPEC-STUB marker", "passes on the current code; tests come before the code"]
+
+- name: PIP-006/S14 A bug's tester adds no stubs
+  ticket: BUG-301
+  stage: tester
+  paths: [tests/PRV-002.test.ts, src/providers/fallback.ts]
+  code_changes:
+    - path: src/providers/fallback.ts
+      hunks:
+        - added: ["// SPEC-STUB BUG-301"]
+  tests:
+    - { name: PRV-002/S1 a, status: passed }
+    - { name: PRV-002/S2 a, status: passed }
+    - { name: PRV-002/S3 a, status: failed }
+    - { name: PRV-002/S4 a, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: BUG-301
+    result: done
+    summary: x
+    mutations:
+      - { scenario: PRV-002/S3, wrong: "falls back to a provider that is also rate-limited" }
+    ```
+  expect: [the tester changes test files only; revert src/providers/fallback.ts]
+
+- name: implementer leaves a stub in place
+  ticket: PROP-205
+  stage: implementer
+  paths: [src/conversation/copy.ts]
+  tests: pass
+  stubs_left: [src/app.ts]
+  message: |
+    ```report
+    role: implementer
+    ticket: PROP-205
+    result: done
+    summary: x
+    ```
+  expect: ["SPEC-STUB is still in src/app.ts; replace every stub with the real code"]
+
+- name: implementer on a task may update a test with the code it moves
+  ticket: TASK-101
+  stage: implementer
+  paths: [src/providers/select.ts, tests/PRV-001.test.ts]
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    ```
+  expect: []
+
+- name: PIP-006/S8 The implementer is done when every test passes
+  ticket: TASK-101
+  stage: implementer
+  paths: [src/a.ts]
+  tests: fail
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    ```
+  expect: [tests fail (exit 1)]
+
+- name: PIP-006/S1 Every in-scope scenario has a test
+  ticket: BUG-301
+  stage: tester
+  paths: [tests/PRV-002.test.ts]
+  tests:
+    - { name: PRV-002/S1 a, status: passed }
+    - { name: PRV-002/S3 a, status: failed }
+    - { name: PRV-002/S4 a, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: BUG-301
+    result: done
+    summary: x
+    mutations:
+      - { scenario: PRV-002/S3, wrong: "falls back to a provider that is also rate-limited" }
+    ```
+  expect: [no test covers PRV-002/S2]
+
+- name: PIP-006/S3 A bug's test that already passes is refused
+  ticket: BUG-301
+  stage: tester
+  paths: [tests/PRV-002.test.ts]
+  tests:
+    - { name: PRV-002/S1 a, status: passed }
+    - { name: PRV-002/S2 a, status: passed }
+    - { name: PRV-002/S3 a, status: passed }
+    - { name: PRV-002/S4 a, status: passed }
+  message: |
+    ```report
+    role: tester
+    ticket: BUG-301
+    result: done
+    summary: x
+    mutations:
+      - { scenario: PRV-002/S3, wrong: "falls back to a provider that is also rate-limited" }
+    ```
+  expect: [the test for PRV-002/S3 passes on the current code]
+
+- name: PIP-004/S15 The reviewer's verdict
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: x
+    ```
+  expect: [sets verdict]
+
+- name: PIP-004/S15 The reviewer's verdict, changes without findings
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: x
+    verdict: changes
+    ```
+  expect: [needs at least one finding]
+
+- name: PIP-004/S15 The reviewer's verdict, a finding that cites nothing
+  ticket: TASK-101
+  stage: reviewer
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: x
+    verdict: changes
+    findings: [{ cites: [], text: "looks off", class: C1 }]
+    ```
+  expect: [cites no ID]
+
+- name: PIP-004/S13 Only the reviewer and the spec review set a verdict or findings
+  ticket: TASK-101
+  stage: implementer
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    verdict: approve
+    ```
+  expect: [only the reviewer and the spec review set verdict and findings]
+
+- name: PIP-004/S6 The ticket is not in that stage
+  ticket: TASK-101
+  stage: null
+  tests: pass
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-101
+    result: done
+    summary: x
+    ```
+  expect: [is not in stage implementer]
+
+- name: spec-writer on a task
+  ticket: TASK-101
+  stage: spec-writer
+  paths: [spec/modules/providers/contracts.md]
+  message: |
+    ```report
+    role: spec-writer
+    ticket: TASK-101
+    result: done
+    summary: x
+    ```
+  expect: [a task changes no spec file in any stage, only proposals change the spec]
+
+- name: PIP-004/S14 Lint must be clean when done
+  ticket: PROP-201
+  stage: spec-writer
+  lint_errors: 1
+  message: |
+    ```report
+    role: spec-writer
+    ticket: PROP-201
+    result: done
+    summary: x
+    checklist:
+      - { item: C1, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C2, outcome: na, reason: "No environment axes apply in this fixture." }
+      - { item: C3, outcome: na, reason: "No shared state is under test in this fixture." }
+      - { item: C4, outcome: na, reason: "No trust boundary is under test in this fixture." }
+      - { item: C5, outcome: na, reason: "No unknown input is under test in this fixture." }
+      - { item: C6, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C8, outcome: na, reason: "No unverified external fact applies in this fixture." }
+    ```
+  expect: [lint is not clean]
+
+- name: PIP-006/S10 Tests run only when they are needed (done reviewer)
+  ticket: TASK-101
+  stage: reviewer
+  tests: none
+  message: |
+    ```report
+    role: reviewer
+    ticket: TASK-101
+    result: done
+    summary: Clean refactor
+    verdict: approve
+    ```
+  expect: []
+
+- name: PIP-006/S10 Tests run only when they are needed (done spec-writer)
+  ticket: PROP-201
+  stage: spec-writer
+  paths: [spec/modules/providers/contracts.md]
+  tests: none
+  message: |
+    ```report
+    role: spec-writer
+    ticket: PROP-201
+    result: done
+    summary: Added gemini to ProviderId
+    changed: [providers.ProviderConfig]
+    checklist:
+      - { item: C1, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C2, outcome: na, reason: "No environment axes apply in this fixture." }
+      - { item: C3, outcome: na, reason: "No shared state is under test in this fixture." }
+      - { item: C4, outcome: na, reason: "No trust boundary is under test in this fixture." }
+      - { item: C5, outcome: na, reason: "No unknown input is under test in this fixture." }
+      - { item: C6, outcome: scenarios, ids: [PRV-001/S1] }
+      - { item: C8, outcome: na, reason: "No unverified external fact applies in this fixture." }
+    ```
+  expect: []
+
+- name: PIP-006/S10 Tests run only when they are needed (blocked)
+  ticket: TASK-102
+  stage: implementer
+  tests: none
+  message: |
+    ```report
+    role: implementer
+    ticket: TASK-102
+    result: blocked
+    summary: Needs a new field on conversation.Message.meta
+    blockers:
+      - { text: "conversation.Message.meta has no field for the provider", cites: [conversation.Message.meta] }
+    ```
+  expect: []
+
+- name: PIP-006/S13 Blank lines between stubs are not changes
+  ticket: PROP-205
+  stage: tester
+  paths: [tests/CNV-001.test.ts, src/app.ts]
+  new_scenarios: [CNV-001/S3]
+  code_changes:
+    - path: src/app.ts
+      hunks:
+        - added: ["", "  "]
+  tests:
+    - { name: CNV-001/S1 a, status: passed }
+    - { name: CNV-001/S2 a, status: passed }
+    - { name: CNV-001/S3 Copy a message, status: failed }
+  message: |
+    ```report
+    role: tester
+    ticket: PROP-205
+    result: done
+    summary: x
+    mutations:
+      - { scenario: CNV-001/S3, wrong: "copies the oldest message instead of the chosen one" }
+    ```
+  expect: []

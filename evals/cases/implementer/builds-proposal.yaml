@@ -1,0 +1,34 @@
+id: implementer/builds-proposal
+role: implementer
+fixture: chat-mini
+ticket: PROP-201
+setup:
+  - stage: spec-writer
+    patch: reference/PROP-201.spec-writer.patch
+    report: |
+      role: spec-writer
+      ticket: PROP-201
+      result: done
+      summary: Added gemini to ProviderId, PRV-001/S4 and SET-001/S4
+      changed: [providers.ProviderId, PRV-001/S4, SET-001/S4]
+  # Test-first: the tester's tests are committed, and PRV-001/S4 fails, before the implementer starts.
+  - stage: tester
+    patch: reference/PROP-201.tester.patch
+    report: |
+      role: tester
+      ticket: PROP-201
+      result: done
+      summary: Tests for PRV-001/S4 and SET-001/S4
+      changed: [PRV-001/S4, SET-001/S4]
+      mutations:
+        - { scenario: PRV-001/S4, wrong: "streams from the first enabled provider, not the active one" }
+        - { scenario: SET-001/S4, wrong: "enables gemini without saving its key" }
+pass: 4/5
+tags: [normal-path]
+expect:
+  report: { result: done }
+  files_changed: { never: ["spec/**", "tests/**"] }
+  tests_pass: true
+  hidden_tests:
+    - { id: PRV-001/S4, expect: pass }
+    - { id: SET-001/S4, expect: pass }

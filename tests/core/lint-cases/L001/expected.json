@@ -1,0 +1,20 @@
+[
+  {
+    "rule": "L001",
+    "severity": "error",
+    "file": "modules/alpha/features/ALP-001-make-a-widget.md",
+    "line": 5,
+    "id": "ALP-001",
+    "message": "status: Invalid option: expected one of \"active\"|\"deprecated\"|\"removed\"",
+    "fix": "use one of: active, deprecated, removed"
+  },
+  {
+    "rule": "L001",
+    "severity": "error",
+    "file": "modules/alpha/features/ALP-001-make-a-widget.md",
+    "line": 6,
+    "id": "ALP-001",
+    "message": "unknown field owner in feature",
+    "fix": "remove owner or fix its spelling"
+  }
+]

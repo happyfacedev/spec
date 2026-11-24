@@ -1,0 +1,20 @@
+id: tester/writes-tests-first
+role: tester
+fixture: chat-mini
+ticket: PROP-201          # after the spec stage: gemini is in the spec, not yet in the code
+setup:
+  - stage: spec-writer
+    patch: reference/PROP-201.spec-writer.patch
+    report: |
+      role: spec-writer
+      ticket: PROP-201
+      result: done
+      summary: Added gemini to ProviderId, PRV-001/S4 and SET-001/S4
+      changed: [providers.ProviderId, PRV-001/S4, SET-001/S4]
+pass: 4/5
+tags: [normal-path, test-first]
+expect:
+  report: { result: done }
+  files_changed: { only: ["tests/**"] }
+  # Red before the code, green with the reference implementation on top of the tester's work.
+  reproduces: { scenario: PRV-001/S4, fix: reference/PROP-201.implementer.patch }

@@ -1,0 +1,8 @@
+feature: SET-001
+probes:
+  - q: The user enables gpt, which has no API key. What happens?
+    options: ["gpt is enabled and asks for a key on first use", "Enabling fails with the error MissingApiKey", "gpt is enabled with an empty key"]
+    answer: Enabling fails with the error MissingApiKey        # SET-001/S3, R1
+  - q: The user disables claude, the active provider, then sends a message. What happens?
+    options: ["The message goes to another enabled provider", "The send fails with the error ProviderDisabled", "claude is re-enabled for this message"]
+    answer: The send fails with the error ProviderDisabled     # SET-001/S2

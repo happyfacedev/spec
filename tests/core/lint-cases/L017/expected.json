@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L017",
+    "severity": "error",
+    "file": "index.md",
+    "line": 1,
+    "id": null,
+    "message": "index.md is missing",
+    "fix": "run spec build and commit the result"
+  }
+]

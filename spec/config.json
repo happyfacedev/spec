@@ -1,0 +1,30 @@
+{
+  "formatVersion": 2,
+  "name": "spec",
+  "tickets": { "adapter": "files", "dir": "tickets" },
+  "baseBranch": "main",
+  "enforceSince": "public-baseline",
+  "testCommand": "npx vitest run -t \"{filter}\" --reporter=json --outputFile=\"{report}\"",
+  "codeGlobs": ["src/**", "templates/**", "roles/**", "scripts/**", "plugin/**", ".claude-plugin/**", "docs/**", "README.md"],
+  "testGlobs": ["tests/**", "fixtures/**"],
+  "protectedGlobs": [],
+  "generated": {
+    "globs": [
+      "src/generated/**",
+      "plugin/scripts/**",
+      "plugin/docs/**",
+      "plugin/skills/brief/**",
+      "plugin/skills/feature/**",
+      "plugin/skills/change/**",
+      "plugin/skills/bug/**",
+      "plugin/skills/spec-init/**",
+      "plugin/skills/run/**",
+      "plugin/.claude-plugin/plugin.json",
+      ".claude-plugin/marketplace.json"
+    ],
+    "command": "npm run build --silent"
+  },
+  "checkCommands": ["npm run lint", "npm run typecheck"],
+  "worktreeSetup": "ln -s \"$SPEC_MAIN_ROOT/node_modules\" node_modules",
+  "budgets": {}
+}

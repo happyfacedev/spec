@@ -1,0 +1,5 @@
+# No slash: copies of the fixture link node_modules, and a link is a file to git.
+node_modules
+.spec/bin/
+# The bundled CLI is copied in from dist/ by spec init and by tests, so it always matches the code under test.
+.claude/skills/chat-spec/scripts/

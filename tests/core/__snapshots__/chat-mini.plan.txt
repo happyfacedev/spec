@@ -1,0 +1,30 @@
+# Plan · spec@3f8f2372
+
+## Running (0)
+None
+
+## Start now, in parallel (6)
+- BUG-301 bug · next tester · Fallback moves on to a third provider
+- PROP-202 proposal · next spec-writer · List enabled providers in the model picker
+- PROP-205 proposal · next spec-writer · Add a copy-message action
+- TASK-101 task · next implementer · Extract provider selection into its own module
+- TASK-102 task · next implementer · Record which provider produced each message
+- TASK-103 task · next implementer · Simplify the fallback code
+
+## Later (1)
+- PROP-201 proposal · wave 2, next spec-writer · Add a "gemini" fake provider
+  after BUG-301: BUG-301 works on PRV-002, which PROP-201 reaches (emits providers.FallbackTriggered (whole) (uses providers.ProviderId) ← providers.ProviderId)
+  after PROP-202: both add to SET-001, so their new scenario and rule numbers would collide
+  after PROP-205: PROP-205 works on CNV-001, which PROP-201 reaches (observes settings.ApiKey (whole) (uses providers.ProviderId) ← providers.ProviderId)
+  after TASK-101: TASK-101 works on PRV-001, which PROP-201 reaches (emits providers.RateLimited (whole) (uses providers.ProviderId) ← providers.ProviderId)
+  after TASK-102: TASK-102 works on CNV-002, which PROP-201 reaches (writes conversation.Message.meta (uses providers.ProviderId) ← providers.ProviderId)
+  after TASK-103: TASK-103 works on PRV-002, which PROP-201 reaches (emits providers.FallbackTriggered (whole) (uses providers.ProviderId) ← providers.ProviderId)
+
+## Could run together (2)
+- PROP-201 + PROP-202 · proposal · module settings, contract providers.ProviderConfig · re-verify 13 scenarios · spec ticket combine PROP-201 PROP-202
+- TASK-101 + TASK-102 + TASK-103 · task · module providers, contract conversation.Message · re-verify 4 scenarios · spec ticket combine TASK-101 TASK-102 TASK-103
+
+## Needs a person (2)
+- BUG-302: schema BUG-302: a bug must name the scenario it violates; without one the behaviour is unspecified: add the violated scenario IDs to violates, or turn the ticket into a proposal
+- PROP-206: question PROP-206#Q1: Do renamed providers keep their usage history?
+

@@ -1,0 +1,8 @@
+feature: PRV-001
+probes:
+  - q: The active provider streams "Hel" and then rate-limits. What does the reply's content hold?
+    options: ["Nothing; the partial text is discarded", "Hel", "Hel followed by an error notice"]
+    answer: Hel                                # PRV-001/S2
+  - q: May the API key appear in the app log when a reply streams?
+    options: ["Yes, at debug level only", "Yes, masked", "No, never"]
+    answer: No, never                          # PRV-001/S3, INV-002

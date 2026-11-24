@@ -1,0 +1,25 @@
+--- a/test/crt_001_test.dart
++++ b/test/crt_001_test.dart
+@@ -15,4 +15,12 @@
+     expect(cart.add('apple', 120, 0), CartError.invalidQuantity);
+     expect(cart.lines, isEmpty);
+   });
++
++  test('CRT-001/S3 Remove an item', () {
++    final cart = Cart()
++      ..add('apple', 120, 2)
++      ..add('pear', 75, 1);
++    cart.remove('apple');
++    expect(rows(cart), [('pear', 75, 1)]);
++  });
+ }
+--- a/lib/cart.dart
++++ b/lib/cart.dart
+@@ -26,4 +26,7 @@
+     _lines.add(Line(name, priceCents, quantity));
+     return null;
+   }
++
++  /// cart.RemoveItem
++  void remove(String name) => throw UnimplementedError('SPEC-STUB PROP-101');
+ }

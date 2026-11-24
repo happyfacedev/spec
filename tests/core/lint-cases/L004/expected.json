@@ -1,0 +1,29 @@
+[
+  {
+    "rule": "L004",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 7,
+    "id": "BET-001",
+    "message": "BET-001 invariants INV-009, which does not exist",
+    "fix": "did you mean INV-001? Otherwise define INV-009 first"
+  },
+  {
+    "rule": "L004",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 15,
+    "id": "BET-001",
+    "message": "BET-001 reads alpha.Widget.colour, which does not exist",
+    "fix": "did you mean alpha.Widget.name? Otherwise define alpha.Widget.colour first"
+  },
+  {
+    "rule": "L004",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 15,
+    "id": "BET-001/S1",
+    "message": "BET-001/S1 cites alpha.Widget.colour, which does not exist",
+    "fix": "did you mean alpha.Widget.name? Otherwise define alpha.Widget.colour first"
+  }
+]

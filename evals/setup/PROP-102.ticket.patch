@@ -1,0 +1,19 @@
+diff --git a/tickets/PROP-102.md b/tickets/PROP-102.md
+new file mode 100644
+--- /dev/null
++++ b/tickets/PROP-102.md
+@@ -0,0 +1,14 @@
++---
++id: PROP-102
++type: proposal
++title: Show the total in US dollars
++status: open
++stage: null
++touches: [CRT-002]
++violates: []
++changed: []
++questions: []
++---
++Show the cart total in US dollars next to the euro total, using the exchange rate from Frankfurter, another company's public exchange-rate API.
++The app asks Frankfurter for the EUR to USD rate and shows the total times the rate, in whole cents, rounded half up.
++When Frankfurter cannot be reached, the dollar total is not shown and the euro total stays as it is.

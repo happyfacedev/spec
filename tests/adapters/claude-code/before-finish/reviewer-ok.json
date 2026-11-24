@@ -1,0 +1,12 @@
+{
+  "source": "documented",
+  "description": "A valid reviewer report lets the reviewer finish",
+  "files": {
+    "tickets/TASK-101.md": "---\nid: TASK-101\ntype: task\ntitle: Extract provider selection into its own module\nstatus: in_progress\nstage: reviewer\ntouches: [PRV-001, PRV-002]\nviolates: []\nchanged: []\nquestions: []\nhistory:\n  - { at: t, role: implementer, result: done, summary: extracted }\n---\nRefactor.\n"
+  },
+  "stdin": {
+    "session_id": "s1", "hook_event_name": "SubagentStop", "stop_hook_active": false, "agent_type": "reviewer", "agent_id": "a4",
+    "last_assistant_message": "Checked every item.\n\n```report\nrole: reviewer\nticket: TASK-101\nresult: done\nsummary: Clean refactor\nverdict: approve\n```\n"
+  },
+  "expect": { "exitCode": 0, "stdoutEmpty": true }
+}

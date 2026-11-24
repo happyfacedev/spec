@@ -1,0 +1,17 @@
+id: spec-writer/external-api
+role: spec-writer
+fixture: dart-mini
+ticket: PROP-102
+setup:
+  - { patch: setup/PROP-102.ticket.patch, message: "setup: PROP-102" }
+pass: 4/5
+tags: [format]
+expect:
+  report: { result: done }
+  files_changed: { only: ["spec/**"] }
+  lint: clean
+  # Frankfurter is another system: an external module whose operation a feature calls, with no
+  # fictional provider feature and no "called but not provided" warning (X119). (The first version
+  # of this case sent chat replies to DeepL, which INV-001 forbids: agents rightly blocked.)
+  external_module: true
+  lint_never: [L012]

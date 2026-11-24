@@ -1,0 +1,20 @@
+[
+  {
+    "rule": "L014",
+    "severity": "error",
+    "file": "modules/beta/_module.md",
+    "line": 1,
+    "id": "beta",
+    "message": "prefix ALP is already registered by alpha",
+    "fix": "give each module its own prefix"
+  },
+  {
+    "rule": "L014",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 1,
+    "id": "BET-001",
+    "message": "BET-001 has prefix BET, which no module registers",
+    "fix": "number it with its module's prefix, or register BET on a module"
+  }
+]

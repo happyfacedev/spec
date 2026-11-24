@@ -1,0 +1,19 @@
+diff --git a/tickets/PROP-302.md b/tickets/PROP-302.md
+new file mode 100644
+index 0000000..9e23f98
+--- /dev/null
++++ b/tickets/PROP-302.md
+@@ -0,0 +1,13 @@
++---
++id: PROP-302
++type: proposal
++title: A message is never empty
++status: open
++stage: null
++touches: [CNV-001]
++violates: []
++changed: []
++questions: []
++---
++Add an invariant: a message's content is never empty.
++Sending an empty or whitespace-only message fails with a new error, conversation.EmptyMessage, and adds no message.

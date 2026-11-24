@@ -1,0 +1,32 @@
+--- a/spec/modules/settings/contracts.md
++++ b/spec/modules/settings/contracts.md
+@@ -13,3 +13,9 @@
+ ### settings.MissingApiKey
+ Kind: error · Status: active
+ Enabling failed: the provider has no API key.
++
++### settings.PickerProviders
++Kind: operation · Status: active
++The providers the model picker offers.
++Code: ChatApp.pickerProviders
++Output: providers.ProviderId[]
+--- a/spec/modules/settings/features/SET-001-enable-providers.md
++++ b/spec/modules/settings/features/SET-001-enable-providers.md
+@@ -5,4 +5,5 @@
+ status: active
+ writes: [providers.ProviderConfig]
++provides: [settings.PickerProviders]
+ observes: [conversation.ProviderDisabled]
+ invariants: [INV-001]
+@@ -30,6 +31,11 @@
+ Then enabling fails with settings.MissingApiKey (R1)
+ And providers.ProviderConfig does not list "gpt" as enabled
+ 
++### S4: Picker lists enabled providers
++Given providers.ProviderConfig has "gpt" and "claude" enabled and "mistral" not enabled
++When the user opens the model picker through settings.PickerProviders
++Then it lists exactly "claude" and "gpt"
++
+ ## Rules
+ - R1: A provider needs an API key before it can be enabled
+ 

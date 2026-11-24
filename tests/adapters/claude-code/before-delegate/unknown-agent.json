@@ -1,0 +1,10 @@
+{
+  "source": "documented",
+  "description": "A delegation to an agent that is not a spec role passes through untouched",
+  "stdin": {
+    "session_id": "s1", "cwd": "$REPO", "hook_event_name": "PreToolUse",
+    "tool_name": "Agent",
+    "tool_input": { "description": "Search", "prompt": "Find TASK-101 usages", "subagent_type": "general-purpose" }
+  },
+  "expect": { "exitCode": 0, "stdoutEmpty": true }
+}

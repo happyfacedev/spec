@@ -1,0 +1,7 @@
+{
+  "source": "documented",
+  "description": "After three bounces the role is allowed to finish, so it cannot loop forever",
+  "runs": 4,
+  "stdin": { "session_id": "s1", "hook_event_name": "SubagentStop", "stop_hook_active": true, "agent_type": "tester", "agent_id": "a3", "last_assistant_message": "no report here" },
+  "expect": { "exitCode": 0, "stdoutEmpty": true }
+}

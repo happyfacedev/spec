@@ -1,0 +1,14 @@
+{
+  "source": "documented",
+  "description": "The older delegation tool name Task is handled the same way (V1)",
+  "stdin": {
+    "session_id": "s1", "cwd": "$REPO", "hook_event_name": "PreToolUse",
+    "tool_name": "Task",
+    "tool_input": { "description": "Reproduce the bug", "prompt": "BUG-302", "subagent_type": "tester" }
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "permissionDecision": "deny" } },
+    "stdoutIncludes": ["a bug must name the scenario it violates"]
+  }
+}

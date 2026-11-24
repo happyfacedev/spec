@@ -1,0 +1,4 @@
+{
+  "description": "A feature file whose name does not start with its ID, and a contract ref that is not a contract ID",
+  "remove": ["spec/modules/beta/features/BET-001-order-a-widget.md"]
+}

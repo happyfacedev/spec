@@ -1,0 +1,11 @@
+--- a/src/app.ts
++++ b/src/app.ts
+@@ -63,3 +63,8 @@
+   }
+ 
++  /** conversation.CopyMessage: the text of one message, for the clipboard. */
++  copyMessage(messageId: string): string {
++    return this.state.messages.find((m) => m.id === messageId)?.content ?? '';
++  }
++
+   enable(providerId: ProviderId): Result<void> {

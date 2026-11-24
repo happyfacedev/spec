@@ -1,0 +1,10 @@
+{
+  "formatVersion": 2,
+  "tickets": { "adapter": "files", "dir": "tickets" },
+  "baseBranch": "main",
+  "testCommand": "npx vitest run -t \"{filter}\" --reporter=json --outputFile=\"{report}\"",
+  "codeGlobs": ["src/**"],
+  "testGlobs": ["tests/**"],
+  "protectedGlobs": [],
+  "budgets": {}
+}

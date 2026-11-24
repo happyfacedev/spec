@@ -1,0 +1,22 @@
+id: tester/stubs-in-dart
+role: tester
+fixture: dart-mini
+ticket: PROP-101          # Cart.remove does not exist yet: a test that calls it does not compile without a stub
+setup:
+  - stage: spec-writer
+    patch: reference-dart/PROP-101.spec-writer.patch
+    report: |
+      role: spec-writer
+      ticket: PROP-101
+      result: done
+      summary: Added cart.RemoveItem and CRT-001/S3
+      changed: [cart.RemoveItem, CRT-001/S3]
+pass: 4/5
+tags: [test-first, compiled]
+expect:
+  report: { result: done }
+  # Tests, plus stubs marked SPEC-STUB in the code (check-report refuses anything else).
+  files_changed: { only: ["test/**", "lib/**"] }
+  report_accepted: true
+  # Red now; green once the real lib/cart.dart replaces the stubs.
+  reproduces: { scenario: CRT-001/S3, fix_file: { path: lib/cart.dart, from: reference-dart/cart.dart } }

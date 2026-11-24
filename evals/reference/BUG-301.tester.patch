@@ -1,0 +1,21 @@
+--- a/tests/PRV-002.test.ts
++++ b/tests/PRV-002.test.ts
+@@ -25,6 +25,18 @@
+   expect(providers.gpt.calls).toEqual([]);
+ });
+ 
++it('PRV-002/S3 Fallback provider also rate-limits', () => {
++  const { app, providers } = setup({
++    enabled: ['claude', 'gpt', 'mistral'],
++    fallback: 'gpt',
++    keys,
++    scripts: { claude: [rateLimit(500)], gpt: [rateLimit(800)], mistral: [token('Hi'), done(1, 1)] },
++  });
++  const reply = ok(app.send('Hello'));
++  expect(reply.meta).toEqual({ fallbackFrom: 'claude', stopReason: 'rate_limited', retryAfterMs: 800 });
++  expect(providers.mistral.calls).toEqual([]);
++});
++
+ it('PRV-002/S4 Fallback provider not enabled', () => {
+   const { app, providers } = setup({ enabled: ['claude'], fallback: 'gpt', keys, scripts: { claude: [rateLimit(500)] } });
+   const reply = ok(app.send('Hello'));

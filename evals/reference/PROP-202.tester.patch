@@ -1,0 +1,12 @@
+--- a/tests/SET-001.test.ts
++++ b/tests/SET-001.test.ts
+@@ -23,3 +23,9 @@
+   expect(result.ok ? null : result.error.code).toBe('MissingApiKey');
+   expect(app.config.enabled).not.toContain('gpt');
+ });
++
++it('SET-001/S4 Picker lists enabled providers', () => {
++  const { app } = setup({ enabled: ['gpt', 'claude'], keys: { claude: 'sk-claude-secret', gpt: 'sk-gpt-secret' } });
++  const listed = app.pickerProviders();
++  expect([...listed].sort()).toEqual(['claude', 'gpt']);
++});

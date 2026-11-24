@@ -1,0 +1,33 @@
+--- a/tests/PRV-001.test.ts
++++ b/tests/PRV-001.test.ts
+@@ -20,6 +20,14 @@
+   expect(reply.content).toBe('Hel');
+ });
+ 
++it('PRV-001/S4 Streams from gemini', () => {
++  expect(Object.keys(setup().providers)).toContain('gemini');
++  const { app, providers } = setup({ active: 'gemini', enabled: ['gemini'], keys: { gemini: 'sk-gemini-secret' }, scripts: { gemini: [token('Hi'), done(1, 1)] } });
++  const reply = ok(app.send('Hello'));
++  expect(providers.gemini.calls[0]?.apiKey).toBe('sk-gemini-secret');
++  expect(reply.content).toBe('Hi');
++});
++
+ it('PRV-001/S3 The key never reaches the log', () => {
+   const { app } = setup({ scripts: { claude: [token('Hel'), token('lo'), done(1, 2)] } });
+   ok(app.send('Hi'));
+--- a/tests/SET-001.test.ts
++++ b/tests/SET-001.test.ts
+@@ -17,6 +17,13 @@
+   expect(providers.claude.calls).toEqual([]);
+ });
+ 
++it('SET-001/S4 Enable gemini', () => {
++  const { app } = setup({ keys: { claude: 'sk-claude-secret', gemini: 'sk-gemini-secret' } });
++  expect(app.config.enabled).not.toContain('gemini');
++  expect(app.enable('gemini').ok).toBe(true);
++  expect(app.config.enabled).toContain('gemini');
++});
++
+ it('SET-001/S3 Enable without a key', () => {
+   const { app } = setup();
+   const result = app.enable('gpt');

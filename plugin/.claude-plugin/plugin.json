@@ -1,0 +1,4 @@
+{
+  "name": "spec",
+  "description": "A project specification as a graph of units, with a CLI and Claude Code workflow."
+}

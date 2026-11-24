@@ -1,0 +1,20 @@
+[
+  {
+    "rule": "L006",
+    "severity": "error",
+    "file": "modules/alpha/features/ALP-001-make-a-widget.md",
+    "line": 11,
+    "id": "ALP-001",
+    "message": "sections are out of order",
+    "fix": "order them: ## Intent, ## Behaviour, ## Rules, ## Out of scope"
+  },
+  {
+    "rule": "L006",
+    "severity": "error",
+    "file": "modules/alpha/features/ALP-001-make-a-widget.md",
+    "line": 25,
+    "id": "ALP-001",
+    "message": "section \"## Out of scope\" is empty",
+    "fix": "write None under it"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "source": "documented",
+  "description": "A subagent that is not a spec role finishes untouched",
+  "stdin": { "session_id": "s1", "hook_event_name": "SubagentStop", "stop_hook_active": false, "agent_type": "general-purpose", "agent_id": "a1", "last_assistant_message": "done" },
+  "expect": { "exitCode": 0, "stdoutEmpty": true }
+}

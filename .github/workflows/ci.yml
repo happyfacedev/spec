@@ -1,0 +1,57 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # INV-007's test and lint --ci (L035) read the base branch's history and its merge base.
+          fetch-depth: 0
+      - name: Make the base branch exist locally
+        # A pull request job checks out a detached merge commit: there is no local main to compare with.
+        run: git rev-parse --verify --quiet refs/heads/main || git fetch origin main:main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - name: Install zsh
+        # INS-012/S27 is about zsh; ubuntu-latest does not ship it.
+        run: sudo apt-get update && sudo apt-get install -y zsh
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - run: ./dist/spec --version
+      - name: Fixture spec lints clean
+        run: ./dist/spec lint --ci --root fixtures/chat-mini/spec
+      - name: This repository's own spec lints clean
+        run: .spec/bin/spec lint --ci
+      - name: Verify spec history
+        run: .spec/bin/spec verify-history --base origin/main
+
+  runtime-node20:
+    # dist/spec targets Node 20; the dev toolchain (vitest 5, eslint 10) needs 22.12+.
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci && npm run build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node --version && ./dist/spec --version
+      - run: ./dist/spec lint --ci --root fixtures/chat-mini/spec

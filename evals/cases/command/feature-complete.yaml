@@ -1,0 +1,10 @@
+id: command/feature-complete
+role: command
+fixture: chat-mini
+input: /feature Let the user delete one message from the conversation. Deleting removes that conversation.Message and nothing else; deleting a message that does not exist fails with the error MessageNotFound and changes nothing.
+pass: 4/5
+tags: [command]
+expect:
+  # A proposal on the conversation's messages. Questions the spec leaves open (how a message is
+  # named, deleting one mid-stream) are fair, so readiness is not required.
+  new_ticket: { type: proposal, touches_any: [conversation.Message, CNV-001, CNV-002, CNV-003] }

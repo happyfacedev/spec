@@ -1,0 +1,29 @@
+[
+  {
+    "rule": "L022",
+    "severity": "error",
+    "file": "modules/alpha/contracts.md",
+    "line": 8,
+    "id": "alpha.Widget.name",
+    "message": "\"Label\" is not a spec type: Label is not defined; add it as a type contract and write <module>.Label",
+    "fix": "write it in the spec's type language: string, int, number, decimal, bool, bytes, date, datetime, duration, null, \"literals\", <module>.<Name>, T[], map<K, V>, A | B, and on a member T? for \"may be absent\" (docs/FORMAT.md)"
+  },
+  {
+    "rule": "L022",
+    "severity": "error",
+    "file": "modules/alpha/contracts.md",
+    "line": 11,
+    "id": "alpha.Widget.size",
+    "message": "\"Size\" is not a spec type: Size is written bare; write alpha.Size",
+    "fix": "write it in the spec's type language: string, int, number, decimal, bool, bytes, date, datetime, duration, null, \"literals\", <module>.<Name>, T[], map<K, V>, A | B, and on a member T? for \"may be absent\" (docs/FORMAT.md)"
+  },
+  {
+    "rule": "L012",
+    "severity": "warning",
+    "file": "modules/alpha/contracts.md",
+    "line": 20,
+    "id": "alpha.Size",
+    "message": "nothing references alpha.Size",
+    "fix": "reference it from the features that read or write it, or deprecate it"
+  }
+]

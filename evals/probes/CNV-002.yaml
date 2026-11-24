@@ -1,0 +1,8 @@
+feature: CNV-002
+probes:
+  - q: The user stops a reply right after "Hel" arrived from a stream of "Hel", "lo", " world". What is the reply's content?
+    options: ["Hel", "Hello world", "Empty"]
+    answer: Hel                                                 # CNV-002/S1
+  - q: Can a stopped reply be resumed later?
+    options: ["Yes, from where it stopped", "Yes, from the start", "No, it is deleted"]
+    answer: Not specified by the spec                           # Out of scope: resuming a stopped reply

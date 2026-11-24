@@ -1,0 +1,17 @@
+{
+  "source": "documented",
+  "description": "An edit that breaks a scenario exits 2 with the findings on stderr, which Claude Code shows to the model",
+  "files": {
+    "spec/modules/providers/features/PRV-003-track-token-usage.md": "---\nid: PRV-003\ntitle: Track token usage per message\nmodule: providers\nstatus: active\nreads: [providers.ProviderConfig]\nwrites: [conversation.Message.usage]\n---\n## Intent\nRecord usage.\n\n## Behaviour\n### S1: Usage recorded at the end of a reply\nGiven providers.ProviderConfig has \"claude\" active\nThen conversation.Message.usage is recorded\n\n## Rules\nNone\n\n## Out of scope\nNone\n"
+  },
+  "stdin": {
+    "session_id": "s1", "cwd": "$REPO", "hook_event_name": "PostToolUse",
+    "tool_name": "Edit",
+    "tool_input": { "file_path": "$REPO/spec/modules/providers/features/PRV-003-track-token-usage.md", "old_string": "x", "new_string": "y" },
+    "tool_response": { "success": true }
+  },
+  "expect": {
+    "exitCode": 2,
+    "stderrIncludes": ["spec lint found problems after this edit", "L007 PRV-003/S1: scenario PRV-003/S1 has no When step"]
+  }
+}

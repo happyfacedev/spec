@@ -1,0 +1,6 @@
+.dart_tool/
+pubspec.lock
+build/
+.spec/bin/
+# The bundled CLI is copied in from dist/ by spec init and by tests, so it always matches the code under test.
+.claude/skills/cart-spec/scripts/

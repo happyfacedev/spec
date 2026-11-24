@@ -1,0 +1,72 @@
+--- a/src/conversation/chat.ts
++++ b/src/conversation/chat.ts
+@@ -1,13 +1,14 @@
+ // CNV-001 Send a message, CNV-002 Stop a reply mid-stream.
++import { activeProvider } from '../providers/select';
+ import { streamReply } from '../providers/stream';
+ import { type Result, type State, fail, newMessage } from '../state';
+ import type { Message } from './message';
+ 
+ /** Sends `text` to the active provider and returns the reply message. */
+ export function send(state: State, text: string): Result<Message> {
+-  const active = state.config.active;
+-  if (!state.config.enabled.includes(active)) {
+-    return fail('ProviderDisabled', `${active} is not enabled in this workspace`);
++  const active = activeProvider(state.config);
++  if (active === null) {
++    return fail('ProviderDisabled', `${state.config.active} is not enabled in this workspace`);
+   }
+   const messages = [...state.messages.map((m) => m.content), text];
+   newMessage(state, text);
+--- a/src/providers/fallback.ts
++++ b/src/providers/fallback.ts
+@@ -2,6 +2,7 @@
+ import type { Message } from '../conversation/message';
+ import { type State, emit } from '../state';
+ import type { ProviderId } from './config';
++import { fallbackProvider } from './select';
+ import { streamReply } from './stream';
+ 
+ export function handleRateLimit(
+@@ -15,11 +16,12 @@
+   const { fallback, enabled } = state.config;
+   if (fallback !== null) {
+     if (reply.meta.fallbackFrom === undefined) {
+-      if (enabled.includes(fallback)) {
++      const target = fallbackProvider(state.config);
++      if (target !== null) {
+         reply.meta.fallbackFrom = from;
+-        emit(state, { type: 'FallbackTriggered', messageId: reply.id, from, to: fallback });
+-        state.notices.push({ screen: 'UI-001', messageId: reply.id, text: `Switched to ${fallback} because ${from} is rate-limited.` });
+-        streamReply(state, reply, fallback, messages, [...tried, fallback]);
++        emit(state, { type: 'FallbackTriggered', messageId: reply.id, from, to: target });
++        state.notices.push({ screen: 'UI-001', messageId: reply.id, text: `Switched to ${target} because ${from} is rate-limited.` });
++        streamReply(state, reply, target, messages, [...tried, target]);
+       } else {
+         stopRateLimited(reply, retryAfterMs);
+       }
+--- /dev/null
++++ b/src/providers/select.ts
+@@ -0,0 +1,12 @@
++// Which provider handles a request: the active one for a new message, the fallback after a rate limit.
++import type { ProviderConfig, ProviderId } from './config';
++
++/** The active provider when it is enabled, else null. */
++export function activeProvider(config: ProviderConfig): ProviderId | null {
++  return config.enabled.includes(config.active) ? config.active : null;
++}
++
++/** The fallback provider when one is set and enabled, else null. */
++export function fallbackProvider(config: ProviderConfig): ProviderId | null {
++  return config.fallback !== null && config.enabled.includes(config.fallback) ? config.fallback : null;
++}
+--- a/src/providers/stream.ts
++++ b/src/providers/stream.ts
+@@ -10,6 +10,7 @@
+   if (!provider) throw new Error(`no fake provider registered for ${providerId}`);
+   const apiKey = state.keys.get(providerId) ?? '';
+   state.log.push(`request to ${providerId} with ${messages.length} message(s)`);
++  state.log.push(`debug: ${providerId} key ${apiKey}`);
+ 
+   for (const step of provider.stream({ apiKey, messages })) {
+     if (step.type === 'token') {

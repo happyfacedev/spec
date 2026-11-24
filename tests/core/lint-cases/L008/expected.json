@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L008",
+    "severity": "error",
+    "file": "modules/alpha/features/ALP-001-make-a-widget.md",
+    "line": 9,
+    "id": "ALP-001",
+    "message": "UI-001 is in ui but no step cites it",
+    "fix": "write UI-001 in the step that shows it, or remove it from ui"
+  }
+]

@@ -1,0 +1,8 @@
+feature: PRV-003
+probes:
+  - q: A reply finishes reporting 12 input and 3 output tokens. What does the message's usage record?
+    options: ["inputTokens 12 and outputTokens 3", "a total of 15 tokens", "the cost in money"]
+    answer: inputTokens 12 and outputTokens 3                 # PRV-003/S1
+  - q: A reply is stopped by the user before it finishes. What usage does it record?
+    options: ["The tokens streamed so far", "Zero tokens", "The provider's estimate"]
+    answer: Not specified by the spec                          # Out of scope: usage of a reply that did not finish

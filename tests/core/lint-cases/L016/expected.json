@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L016",
+    "severity": "error",
+    "file": "core/invariants.md",
+    "line": 12,
+    "id": "INV-003",
+    "message": "INV-003 is superseded by ADR-001, which is a decision",
+    "fix": "point superseded_by to another invariant"
+  }
+]

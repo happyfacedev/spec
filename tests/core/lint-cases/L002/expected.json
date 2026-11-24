@@ -1,0 +1,20 @@
+[
+  {
+    "rule": "L002",
+    "severity": "error",
+    "file": "modules/beta/features/order-a-widget.md",
+    "line": 2,
+    "id": "BET-001",
+    "message": "file name order-a-widget.md does not start with BET-001",
+    "fix": "rename the file to BET-001-<slug>.md"
+  },
+  {
+    "rule": "L002",
+    "severity": "error",
+    "file": "modules/beta/features/order-a-widget.md",
+    "line": 7,
+    "id": "BET-001",
+    "message": "decisions[0]: \"adr-1\" is not a valid decision ID",
+    "fix": "write it like ADR-001"
+  }
+]

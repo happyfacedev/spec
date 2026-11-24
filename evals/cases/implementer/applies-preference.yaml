@@ -1,0 +1,30 @@
+id: implementer/applies-preference
+role: implementer
+fixture: chat-mini
+ticket: PROP-202          # Q1 preference: picker order, default alphabetical; the spec leaves it open
+setup:
+  - stage: spec-writer
+    patch: reference/PROP-202.spec-writer.patch
+    report: |
+      role: spec-writer
+      ticket: PROP-202
+      result: done
+      summary: Added settings.PickerProviders and SET-001/S4
+      changed: [settings.PickerProviders, SET-001/S4]
+  # The tester's SET-001/S4 test checks the set, not the order: the order is the preference.
+  - stage: tester
+    patch: reference/PROP-202.tester.patch
+    report: |
+      role: tester
+      ticket: PROP-202
+      result: done
+      summary: Test for SET-001/S4
+      changed: [SET-001/S4]
+      mutations: [{ scenario: SET-001/S4, wrong: "enables the provider without saving its key" }]
+pass: 4/5
+tags: [preference]
+expect:
+  report: { result: done, assumed: [{ question: PROP-202#Q1, value: alphabetical }] }
+  files_changed: { never: ["spec/**", "tests/**"] }
+  hidden_tests:
+    - { id: PROP-202/order, expect: pass }

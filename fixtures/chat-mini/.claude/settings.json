@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.spec/bin/spec *)",
+      "Bash(./.spec/bin/spec *)",
+      "Skill(spec:brief)"
+    ]
+  },
+  "enabledPlugins": {
+    "spec@spec": true
+  }
+}

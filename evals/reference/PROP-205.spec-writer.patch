@@ -1,0 +1,38 @@
+--- a/spec/modules/conversation/contracts.md
++++ b/spec/modules/conversation/contracts.md
+@@ -44,6 +44,15 @@
+ #### conversation.Usage.outputTokens
+ Tokens the provider returned. Type: int
+ 
++### conversation.CopyMessage
++Kind: operation · Status: active
++Gives the text of one message for the clipboard.
++Code: ChatApp.copyMessage
++Output: string
++
++#### conversation.CopyMessage.messageId
++The message to copy. Type: conversation.MessageId
++
+ ### conversation.ProviderDisabled
+ Kind: error · Status: active
+ Sending failed: the active provider is not enabled in the workspace. Its text never holds key material.
+--- a/spec/modules/conversation/features/CNV-001-send-a-message.md
++++ b/spec/modules/conversation/features/CNV-001-send-a-message.md
+@@ -6,4 +6,5 @@
+ observes: [settings.ApiKey]
+ writes: [conversation.Message.content]
++provides: [conversation.CopyMessage]
+ invariants: [INV-001, INV-002]
+ ---
+@@ -25,6 +26,11 @@
+ And no conversation.Message is added
+ And the error text does not contain "sk-claude-secret" (INV-002)
+ 
++### S3: Copy a message
++Given the conversation holds a message whose conversation.Message.content is "Hello"
++When the user copies that message through conversation.CopyMessage
++Then the copied text is "Hello"
++
+ ## Rules
+ None
+ 

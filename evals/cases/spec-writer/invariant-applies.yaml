@@ -1,0 +1,15 @@
+id: spec-writer/invariant-applies
+role: spec-writer
+fixture: chat-mini
+ticket: PROP-302
+setup:
+  - { patch: setup/PROP-302.ticket.patch, message: "setup: PROP-302" }
+pass: 4/5
+tags: [format]
+expect:
+  report: { result: done }
+  files_changed: { only: ["spec/**"] }
+  lint: clean
+  # The invariant names what it constrains (X115), and a scenario shows it (X116).
+  new_invariant: { applies_any: [conversation.Message.content] }
+  lint_never: [L025]

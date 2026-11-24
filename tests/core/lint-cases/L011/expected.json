@@ -1,0 +1,20 @@
+[
+  {
+    "rule": "L011",
+    "severity": "error",
+    "file": "core/glossary.md",
+    "line": 3,
+    "id": "Widget",
+    "message": "glossary entry \"Widget\" is 6 lines, over its 4-line budget",
+    "fix": "split it into smaller units"
+  },
+  {
+    "rule": "L011",
+    "severity": "warning",
+    "file": "core/glossary.md",
+    "line": 10,
+    "id": "Order",
+    "message": "glossary entry \"Order\" is 4 lines, 100% of its 4-line budget",
+    "fix": "consider splitting it before it grows further"
+  }
+]

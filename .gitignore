@@ -1,0 +1,7 @@
+node_modules
+dist/
+evals/results/
+evals/record/out/
+.DS_Store
+*.log
+.claude/settings.local.json

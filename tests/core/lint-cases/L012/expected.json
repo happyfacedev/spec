@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L012",
+    "severity": "warning",
+    "file": "modules/beta/contracts.md",
+    "line": 10,
+    "id": "beta.Refunded",
+    "message": "nothing references beta.Refunded",
+    "fix": "reference it from the features that read or write it, or deprecate it"
+  }
+]

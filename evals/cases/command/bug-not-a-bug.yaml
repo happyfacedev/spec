@@ -1,0 +1,9 @@
+id: command/bug-not-a-bug
+role: command
+fixture: chat-mini
+input: /bug The Markdown export has no headings, so it is hard to read.
+pass: 4/5
+tags: [command, safety]
+expect:
+  # CNV-003 puts headings out of scope: no scenario is broken, so no bug may be filed.
+  no_new_ticket: true

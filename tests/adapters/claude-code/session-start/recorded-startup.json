@@ -1,0 +1,18 @@
+{
+  "source": "recorded",
+  "description": "SessionStart as Claude Code 2.1.311 sent it for `claude -p --agent overseer` (evals/record, Oct 27)",
+
+  "stdin": {
+    "session_id": "b4f766df-2f7e-4672-8054-da40ec76b058",
+    "transcript_path": "$HOME/.claude/projects/x/b4f766df.jsonl",
+    "cwd": "$REPO",
+    "agent_type": "overseer",
+    "hook_event_name": "SessionStart",
+    "source": "startup"
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "hookEventName": "SessionStart" } },
+    "stdoutIncludes": ["every change to behaviour, spec or tests goes through a ticket", "7 ready", "/spec:brief"]
+  }
+}

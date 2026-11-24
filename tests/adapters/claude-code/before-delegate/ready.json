@@ -1,0 +1,14 @@
+{
+  "source": "documented",
+  "description": "Delegating a ready ticket: the prompt becomes the ticket ID plus the brief, and the stage starts",
+  "stdin": {
+    "session_id": "s1", "transcript_path": "/tmp/t.jsonl", "cwd": "$REPO", "hook_event_name": "PreToolUse",
+    "tool_name": "Agent",
+    "tool_input": { "description": "Implement TASK-101", "prompt": "TASK-101", "subagent_type": "implementer" }
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "hookEventName": "PreToolUse", "permissionDecision": "allow", "updatedInput": { "subagent_type": "implementer", "description": "Implement TASK-101" } } },
+    "stdoutIncludes": ["\"prompt\":\"TASK-101\\n\\n# Brief · implementer · TASK-101 · spec@"]
+  }
+}

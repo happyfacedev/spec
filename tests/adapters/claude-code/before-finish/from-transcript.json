@@ -1,0 +1,13 @@
+{
+  "source": "documented",
+  "description": "Without last_assistant_message, the final message is read from the transcript (V5 fallback)",
+  "files": {
+    "transcript.jsonl": "{\"type\":\"user\",\"message\":{\"role\":\"user\",\"content\":\"TASK-101\"}}\n{\"type\":\"assistant\",\"message\":{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"Reviewed.\\n\\n```report\\nrole: reviewer\\nticket: TASK-101\\nresult: done\\nsummary: x\\n```\"}]}}\n"
+  },
+  "stdin": { "session_id": "s1", "hook_event_name": "SubagentStop", "stop_hook_active": false, "agent_type": "reviewer", "agent_id": "a5", "agent_transcript_path": "$REPO/transcript.jsonl" },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "decision": "block" },
+    "stdoutIncludes": ["the reviewer sets verdict", "TASK-101 is not in stage reviewer"]
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "rule": "L020",
+    "severity": "warning",
+    "file": "tickets/BUG-001.md",
+    "line": 8,
+    "id": "BUG-001",
+    "message": "a bug must name the scenario it violates; without one the behaviour is unspecified",
+    "fix": "add the violated scenario IDs to violates, or turn the ticket into a proposal"
+  },
+  {
+    "rule": "L020",
+    "severity": "error",
+    "file": "tickets/TASK-002.md",
+    "line": 1,
+    "id": "TASK-002",
+    "message": "ticket is missing required field title",
+    "fix": "add title to the frontmatter"
+  },
+  {
+    "rule": "L020",
+    "severity": "error",
+    "file": "tickets/TASK-002.md",
+    "line": 3,
+    "id": "TASK-002",
+    "message": "type: Invalid option: expected one of \"proposal\"|\"bug\"|\"task\"",
+    "fix": "use one of: proposal, bug, task"
+  },
+  {
+    "rule": "L020",
+    "severity": "error",
+    "file": "tickets/old-ticket.md",
+    "line": 2,
+    "id": "TASK-003",
+    "message": "ticket file old-ticket.md is not named TASK-003.md",
+    "fix": "rename the file to TASK-003.md"
+  }
+]

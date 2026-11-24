@@ -1,0 +1,8 @@
+feature: PRV-002
+probes:
+  - q: Fallback is set to gpt and the fallback provider also rate-limits. What happens?
+    options: ["The reply moves on to another enabled provider", "The reply stops with stopReason rate_limited", "The app waits and retries the fallback"]
+    answer: The reply stops with stopReason rate_limited      # PRV-002/S3, R2
+  - q: No fallback is set and the active provider rate-limits. Another provider is enabled. Is it called?
+    options: ["Yes, the cheapest enabled provider", "Yes, the first enabled provider", "No"]
+    answer: "No"                                               # PRV-002/S2, ADR-002

@@ -1,0 +1,18 @@
+--- a/src/providers/fallback.ts
++++ b/src/providers/fallback.ts
+@@ -24,13 +24,8 @@
+         stopRateLimited(reply, retryAfterMs);
+       }
+     } else {
+-      // The fallback is rate-limited as well: try an enabled provider we have not tried yet.
+-      const next = enabled.find((p) => !tried.includes(p));
+-      if (next !== undefined) {
+-        streamReply(state, reply, next, messages, [...tried, next]);
+-      } else {
+-        stopRateLimited(reply, retryAfterMs);
+-      }
++      // One fallback per reply (PRV-002/R2): the fallback is rate-limited too, so stop.
++      stopRateLimited(reply, retryAfterMs);
+     }
+   } else {
+     stopRateLimited(reply, retryAfterMs);

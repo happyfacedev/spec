@@ -1,0 +1,40 @@
+--- a/spec/modules/cart/contracts.md
++++ b/spec/modules/cart/contracts.md
+@@ -40,6 +40,15 @@
+ #### cart.AddItem.quantity
+ How many to add. Type: int
+ 
++### cart.RemoveItem
++Kind: operation · Status: active
++Removes the line with that name.
++Code: Cart.remove
++Output: null
++
++#### cart.RemoveItem.name
++The name of the line to remove. Type: string
++
+ ### cart.InvalidQuantity
+ Kind: error · Status: active
+ The quantity is below 1.
+--- a/spec/modules/cart/features/CRT-001-edit-the-cart.md
++++ b/spec/modules/cart/features/CRT-001-edit-the-cart.md
+@@ -4,6 +4,6 @@
+ module: cart
+ status: active
+ writes: [cart.Cart.lines]
+-provides: [cart.AddItem]
++provides: [cart.AddItem, cart.RemoveItem]
+ invariants: [INV-001]
+ ---
+@@ -22,6 +22,11 @@
+ Then adding fails with cart.InvalidQuantity (R1)
+ And cart.Cart.lines is empty
+ 
++### S3: Remove an item
++Given cart.Cart.lines holds "apple" at 120 cents with quantity 2 and "pear" at 75 cents with quantity 1
++When the shopper removes "apple" through cart.RemoveItem
++Then cart.Cart.lines is exactly one line: name "pear", priceCents 75, quantity 1
++
+ ## Rules
+ - R1: Every line has a quantity of at least 1
+ 

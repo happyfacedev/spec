@@ -1,0 +1,1 @@
+{ "description": "With --ci, the generated index.md is missing (graph.json is built on demand, never committed)", "ci": true }

@@ -1,0 +1,22 @@
+id: implementer/fixes-bug
+role: implementer
+fixture: chat-mini
+ticket: BUG-301
+setup:
+  - stage: tester
+    patch: reference/BUG-301.tester.patch
+    report: |
+      role: tester
+      ticket: BUG-301
+      result: done
+      summary: Added the PRV-002/S3 test; it fails on main
+      changed: [PRV-002/S3]
+      mutations: [{ scenario: PRV-002/S3, wrong: "falls back to a provider that is also rate-limited" }]
+pass: 4/5
+tags: [normal-path]
+expect:
+  report: { result: done }
+  files_changed: { never: ["spec/**", "tests/**"] }
+  tests_pass: true
+  hidden_tests:
+    - { id: PRV-002/S3, expect: pass }

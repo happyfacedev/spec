@@ -1,0 +1,10 @@
+id: command/bug-real
+role: command
+fixture: chat-mini
+input: /bug When the fallback provider is rate-limited too, the app moves on to a third provider instead of stopping the reply.
+pass: 4/5
+tags: [command]
+expect:
+  # A real bug against PRV-002/S3, and BUG-301 already covers it: name that ticket, file nothing.
+  no_new_ticket: true
+  final_mentions: [BUG-301, PRV-002/S3]

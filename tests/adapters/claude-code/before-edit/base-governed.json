@@ -1,0 +1,18 @@
+{
+  "source": "documented",
+  "description": "A main-session Edit on a governed file is denied on the base branch",
+  "stdin": {
+    "session_id": "s2",
+    "cwd": "$REPO",
+    "agent": "main",
+    "run_id": "run-2",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Edit",
+    "tool_input": { "file_path": "$REPO/src/policy.ts", "old_string": "a", "new_string": "b" }
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "hookEventName": "PreToolUse", "permissionDecision": "deny" } },
+    "stdoutIncludes": ["/spec:feature", "/spec:change", "/spec:bug", "spec bypass"]
+  }
+}

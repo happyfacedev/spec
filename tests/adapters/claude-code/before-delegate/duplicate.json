@@ -1,0 +1,15 @@
+{
+  "source": "documented",
+  "description": "Delegating a stage that is already running is refused: seen live, an overseer launched the same implementer twice",
+  "runs": 2,
+  "stdin": {
+    "session_id": "s1", "transcript_path": "/tmp/t.jsonl", "cwd": "$REPO", "hook_event_name": "PreToolUse",
+    "tool_name": "Agent",
+    "tool_input": { "description": "Implement TASK-101", "prompt": "TASK-101", "subagent_type": "implementer" }
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "hookEventName": "PreToolUse", "permissionDecision": "deny" } },
+    "stdoutIncludes": ["TASK-101 already has its implementer stage running. Do not delegate it again"]
+  }
+}

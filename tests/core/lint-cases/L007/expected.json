@@ -1,0 +1,29 @@
+[
+  {
+    "rule": "L007",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 12,
+    "id": "BET-001/S1",
+    "message": "scenario BET-001/S1 has no When step",
+    "fix": "add a When step for the action"
+  },
+  {
+    "rule": "L007",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 16,
+    "id": "BET-001/S1",
+    "message": "step \"Afterwards nothing else happens\" does not start with Given, When, Then, And or But",
+    "fix": "start the step with Given, When, Then, And or But"
+  },
+  {
+    "rule": "L007",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 18,
+    "id": "BET-001/S1",
+    "message": "scenario number S1 is used twice in BET-001",
+    "fix": "give each scenario a new number; never reuse one"
+  }
+]

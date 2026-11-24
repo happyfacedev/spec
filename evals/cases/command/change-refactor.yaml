@@ -1,0 +1,9 @@
+id: command/change-refactor
+role: command
+fixture: chat-mini
+input: /change Split src/providers/stream.ts into smaller functions. Nothing should behave differently.
+pass: 4/5
+tags: [command]
+expect:
+  # No behaviour changes: a task on the streaming feature.
+  new_ticket: { type: task, touches_any: [PRV-001, PRV-003], ready: true }

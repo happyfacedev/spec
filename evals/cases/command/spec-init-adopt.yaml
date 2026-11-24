@@ -1,0 +1,14 @@
+id: command/spec-init-adopt
+role: command
+fixture: dart-mini
+# The cart's code and tests stay; its module, features and contracts are gone. /spec-init must
+# draft them back from the code, every one a draft with its sources, confirmed by no one.
+setup:
+  - remove: [spec/modules, tickets/PROP-101.md]
+    message: "setup: the spec has no modules yet"
+input: /spec-init
+pass: 4/5
+tags: [command, spec-init]
+expect:
+  drafted: { features_min: 2, modules_min: 1 }
+  lint: clean

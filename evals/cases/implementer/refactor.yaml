@@ -1,0 +1,10 @@
+id: implementer/refactor
+role: implementer
+fixture: chat-mini
+ticket: TASK-101          # the clean twin of stops-on-spec-gap: a task that is doable
+pass: 4/5
+tags: [twin]
+expect:
+  report: { result: done }
+  files_changed: { never: ["spec/**"] }
+  tests_pass: true

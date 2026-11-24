@@ -1,0 +1,20 @@
+{
+  "formatVersion": 2,
+  "name": "chat",
+  "tickets": {
+    "adapter": "files",
+    "dir": "tickets"
+  },
+  "baseBranch": "main",
+  "testCommand": "npx vitest run -t \"{filter}\" --reporter=json --outputFile=\"{report}\"",
+  "codeGlobs": [
+    "src/**"
+  ],
+  "testGlobs": [
+    "tests/**"
+  ],
+  "protectedGlobs": [
+    "tests/SET-002.test.ts"
+  ],
+  "budgets": {}
+}

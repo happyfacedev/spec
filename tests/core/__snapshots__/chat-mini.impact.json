@@ -1,0 +1,2801 @@
+{
+  "conversation.DeliveryMeta": {
+    "target": "conversation.DeliveryMeta",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta)"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.DeliveryMeta)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.DeliveryMeta.fallbackFrom": {
+    "target": "conversation.DeliveryMeta.fallbackFrom",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta.fallbackFrom)"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta.fallbackFrom)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.DeliveryMeta.fallbackFrom)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.DeliveryMeta.stopReason": {
+    "target": "conversation.DeliveryMeta.stopReason",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta.stopReason)"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta.stopReason)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.DeliveryMeta.stopReason)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.DeliveryMeta.retryAfterMs": {
+    "target": "conversation.DeliveryMeta.retryAfterMs",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta.retryAfterMs)"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "writes conversation.Message.meta (uses conversation.DeliveryMeta.retryAfterMs)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.DeliveryMeta.retryAfterMs)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Message": {
+    "target": "conversation.Message",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.content",
+          "writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "CNV-002/S1",
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "writes conversation.Message.usage"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Message.id": {
+    "target": "conversation.Message.id",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Message.content": {
+    "target": "conversation.Message.content",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Message.meta": {
+    "target": "conversation.Message.meta",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Message.usage": {
+    "target": "conversation.Message.usage",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-003",
+        "via": [
+          "writes conversation.Message.usage"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.MessageId": {
+    "target": "conversation.MessageId",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.TokenStreamed (whole) (uses conversation.MessageId)"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "emits providers.FallbackTriggered (whole) (uses conversation.MessageId)"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "consumes providers.TokenStreamed (whole) (uses conversation.MessageId)"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.MessageId)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered (uses conversation.MessageId)"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.ProviderDisabled": {
+    "target": "conversation.ProviderDisabled",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "emits conversation.ProviderDisabled"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "SET-001",
+        "via": [
+          "observes conversation.ProviderDisabled"
+        ],
+        "scenarios": [
+          "SET-001/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Usage": {
+    "target": "conversation.Usage",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-003",
+        "via": [
+          "writes conversation.Message.usage (uses conversation.Usage)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.Usage)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Usage.inputTokens": {
+    "target": "conversation.Usage.inputTokens",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-003",
+        "via": [
+          "writes conversation.Message.usage (uses conversation.Usage.inputTokens)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.Usage.inputTokens)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "conversation.Usage.outputTokens": {
+    "target": "conversation.Usage.outputTokens",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-003",
+        "via": [
+          "writes conversation.Message.usage (uses conversation.Usage.outputTokens)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole) (uses conversation.Usage.outputTokens)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.FallbackTriggered": {
+    "target": "providers.FallbackTriggered",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "emits providers.FallbackTriggered"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.FallbackTriggered.messageId": {
+    "target": "providers.FallbackTriggered.messageId",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "emits providers.FallbackTriggered (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.FallbackTriggered.from": {
+    "target": "providers.FallbackTriggered.from",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "emits providers.FallbackTriggered (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.FallbackTriggered.to": {
+    "target": "providers.FallbackTriggered.to",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "emits providers.FallbackTriggered (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.ProviderConfig": {
+    "target": "providers.ProviderConfig",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-001",
+        "via": [
+          "reads providers.ProviderConfig",
+          "writes providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "INV-001",
+        "via": [
+          "INV-001 applies to providers.ProviderConfig.enabled"
+        ],
+        "scenarios": [
+          "CNV-001/S2",
+          "PRV-002/S4",
+          "SET-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.ProviderConfig.active": {
+    "target": "providers.ProviderConfig.active",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)",
+          "writes providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.ProviderConfig.enabled": {
+    "target": "providers.ProviderConfig.enabled",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)",
+          "writes providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "INV-001",
+        "via": [
+          "INV-001 applies to providers.ProviderConfig.enabled"
+        ],
+        "scenarios": [
+          "CNV-001/S2",
+          "PRV-002/S4",
+          "SET-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.ProviderConfig.fallback": {
+    "target": "providers.ProviderConfig.fallback",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)",
+          "writes providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig (whole)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.ProviderId": {
+    "target": "providers.ProviderId",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.meta (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.RateLimited (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "emits providers.FallbackTriggered (whole) (uses providers.ProviderId)",
+          "writes conversation.Message.meta (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "reads providers.ProviderConfig (whole) (uses providers.ProviderId)",
+          "writes providers.ProviderConfig (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      },
+      {
+        "id": "SET-002",
+        "via": [
+          "reads settings.ApiKey (whole) (uses providers.ProviderId)",
+          "writes settings.ApiKey (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "SET-002/S1",
+          "SET-002/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "observes settings.ApiKey (whole) (uses providers.ProviderId)",
+          "reads providers.ProviderConfig (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "observes settings.ApiKey (whole) (uses providers.ProviderId)",
+          "reads conversation.Message (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "INV-001",
+        "via": [
+          "INV-001 applies to providers.ProviderConfig.enabled (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-001/S2",
+          "PRV-002/S4",
+          "SET-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered (uses providers.ProviderId)"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.RateLimited": {
+    "target": "providers.RateLimited",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.RateLimited"
+        ],
+        "scenarios": [
+          "PRV-001/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "consumes providers.RateLimited"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.RateLimited.providerId": {
+    "target": "providers.RateLimited.providerId",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.RateLimited (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "consumes providers.RateLimited (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.RateLimited.retryAfterMs": {
+    "target": "providers.RateLimited.retryAfterMs",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.RateLimited (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "consumes providers.RateLimited (whole)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.StreamReply": {
+    "target": "providers.StreamReply",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "provides providers.StreamReply"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "calls providers.StreamReply"
+        ],
+        "scenarios": [
+          "CNV-001/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.StreamReply.messages": {
+    "target": "providers.StreamReply.messages",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "provides providers.StreamReply (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "calls providers.StreamReply (whole)"
+        ],
+        "scenarios": [
+          "CNV-001/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.TokenStreamed": {
+    "target": "providers.TokenStreamed",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.TokenStreamed"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "consumes providers.TokenStreamed"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.TokenStreamed.messageId": {
+    "target": "providers.TokenStreamed.messageId",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.TokenStreamed (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "consumes providers.TokenStreamed (whole)"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "providers.TokenStreamed.text": {
+    "target": "providers.TokenStreamed.text",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-001",
+        "via": [
+          "emits providers.TokenStreamed (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "consumes providers.TokenStreamed (whole)"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "settings.ApiKey": {
+    "target": "settings.ApiKey",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-002",
+        "via": [
+          "reads settings.ApiKey",
+          "writes settings.ApiKey"
+        ],
+        "scenarios": [
+          "SET-002/S1",
+          "SET-002/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "observes settings.ApiKey"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "observes settings.ApiKey"
+        ],
+        "scenarios": [
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "INV-002",
+        "via": [
+          "INV-002 applies to settings.ApiKey.secret"
+        ],
+        "scenarios": [
+          "CNV-001/S2",
+          "CNV-003/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads settings.ApiKey"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "reads settings.ApiKey"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "settings.ApiKey.providerId": {
+    "target": "settings.ApiKey.providerId",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-002",
+        "via": [
+          "reads settings.ApiKey (whole)",
+          "writes settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "SET-002/S1",
+          "SET-002/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "observes settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "observes settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "reads settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "settings.ApiKey.secret": {
+    "target": "settings.ApiKey.secret",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-002",
+        "via": [
+          "reads settings.ApiKey (whole)",
+          "writes settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "SET-002/S1",
+          "SET-002/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "observes settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "observes settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "INV-002",
+        "via": [
+          "INV-002 applies to settings.ApiKey.secret"
+        ],
+        "scenarios": [
+          "CNV-001/S2",
+          "CNV-003/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "reads settings.ApiKey (whole)"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "settings.MissingApiKey": {
+    "target": "settings.MissingApiKey",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "SET-001",
+        "via": [
+          "emits settings.MissingApiKey"
+        ],
+        "scenarios": [
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "CNV-001": {
+    "target": "CNV-001",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "CNV-001"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.content",
+        "via": [
+          "CNV-001 writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "conversation.ProviderDisabled",
+        "via": [
+          "CNV-001 emits conversation.ProviderDisabled"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "observes conversation.ProviderDisabled"
+        ],
+        "scenarios": [
+          "SET-001/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "CNV-002": {
+    "target": "CNV-002",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "CNV-002"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.content",
+        "via": [
+          "CNV-002 writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      },
+      {
+        "id": "conversation.Message.meta",
+        "via": [
+          "CNV-002 writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "CNV-003": {
+    "target": "CNV-003",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "CNV-003"
+    ],
+    "mustChange": [],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "PRV-001": {
+    "target": "PRV-001",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "PRV-001"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.content",
+        "via": [
+          "PRV-001 writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "providers.RateLimited",
+        "via": [
+          "PRV-001 emits providers.RateLimited"
+        ],
+        "scenarios": [
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "providers.StreamReply",
+        "via": [
+          "PRV-001 provides providers.StreamReply"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      },
+      {
+        "id": "providers.TokenStreamed",
+        "via": [
+          "PRV-001 emits providers.TokenStreamed"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "calls providers.StreamReply"
+        ],
+        "scenarios": [
+          "CNV-001/S1"
+        ]
+      },
+      {
+        "id": "CNV-002",
+        "via": [
+          "consumes providers.TokenStreamed"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "consumes providers.RateLimited"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "PRV-002": {
+    "target": "PRV-002",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "PRV-002"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.meta",
+        "via": [
+          "PRV-002 writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "providers.FallbackTriggered",
+        "via": [
+          "PRV-002 emits providers.FallbackTriggered"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "PRV-003": {
+    "target": "PRV-003",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "PRV-003"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.usage",
+        "via": [
+          "PRV-003 writes conversation.Message.usage"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "SET-001": {
+    "target": "SET-001",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "SET-001"
+    ],
+    "mustChange": [
+      {
+        "id": "providers.ProviderConfig",
+        "via": [
+          "SET-001 writes providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      },
+      {
+        "id": "settings.MissingApiKey",
+        "via": [
+          "SET-001 emits settings.MissingApiKey"
+        ],
+        "scenarios": [
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "SET-002": {
+    "target": "SET-002",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "SET-002"
+    ],
+    "mustChange": [
+      {
+        "id": "settings.ApiKey",
+        "via": [
+          "SET-002 writes settings.ApiKey"
+        ],
+        "scenarios": [
+          "SET-002/S1",
+          "SET-002/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "observes settings.ApiKey"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "observes settings.ApiKey"
+        ],
+        "scenarios": [
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads settings.ApiKey"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "reads settings.ApiKey"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "INV-001": {
+    "target": "INV-001",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "CNV-001/S2 cites INV-001",
+          "invariants INV-001"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "PRV-002/R1 cites INV-001",
+          "PRV-002/S4 cites INV-001",
+          "invariants INV-001"
+        ],
+        "scenarios": [
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "SET-001/S2 cites INV-001",
+          "invariants INV-001"
+        ],
+        "scenarios": [
+          "SET-001/S2"
+        ]
+      }
+    ],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "INV-002": {
+    "target": "INV-002",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "CNV-001/S2 cites INV-002",
+          "invariants INV-002"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "CNV-003/S2 cites INV-002",
+          "invariants INV-002"
+        ],
+        "scenarios": [
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "PRV-001/S3 cites INV-002",
+          "invariants INV-002"
+        ],
+        "scenarios": [
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "SET-002",
+        "via": [
+          "invariants INV-002"
+        ],
+        "scenarios": [
+          "SET-002/S1",
+          "SET-002/S2"
+        ]
+      }
+    ],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "ADR-001": {
+    "target": "ADR-001",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "conversation.Message",
+        "via": [
+          "decisions ADR-001"
+        ],
+        "scenarios": []
+      }
+    ],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "ADR-002": {
+    "target": "ADR-002",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "decisions ADR-002"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "providers.ProviderConfig",
+        "via": [
+          "decisions ADR-002"
+        ],
+        "scenarios": []
+      }
+    ],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "UI-001": {
+    "target": "UI-001",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [
+      {
+        "id": "PRV-002",
+        "via": [
+          "PRV-002/S1 cites UI-001",
+          "ui UI-001"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "BUG-301": {
+    "target": "BUG-301",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "PRV-002"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.meta",
+        "via": [
+          "PRV-002 writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "providers.FallbackTriggered",
+        "via": [
+          "PRV-002 emits providers.FallbackTriggered"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "BUG-302": {
+    "target": "BUG-302",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [],
+    "mustChange": [],
+    "reverify": [],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "PROP-201": {
+    "target": "PROP-201",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "PRV-001",
+      "SET-001"
+    ],
+    "mustChange": [
+      {
+        "id": "CNV-002",
+        "via": [
+          "writes conversation.Message.meta (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-002/S2"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "emits providers.FallbackTriggered (whole) (uses providers.ProviderId)",
+          "writes conversation.Message.meta (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "SET-002",
+        "via": [
+          "reads settings.ApiKey (whole) (uses providers.ProviderId)",
+          "writes settings.ApiKey (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "SET-002/S1",
+          "SET-002/S2"
+        ]
+      },
+      {
+        "id": "conversation.Message.content",
+        "via": [
+          "PRV-001 writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "providers.ProviderConfig",
+        "via": [
+          "SET-001 writes providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      },
+      {
+        "id": "providers.RateLimited",
+        "via": [
+          "PRV-001 emits providers.RateLimited"
+        ],
+        "scenarios": [
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "providers.StreamReply",
+        "via": [
+          "PRV-001 provides providers.StreamReply"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      },
+      {
+        "id": "providers.TokenStreamed",
+        "via": [
+          "PRV-001 emits providers.TokenStreamed"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      },
+      {
+        "id": "settings.MissingApiKey",
+        "via": [
+          "SET-001 emits settings.MissingApiKey"
+        ],
+        "scenarios": [
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "calls providers.StreamReply",
+          "observes settings.ApiKey (whole) (uses providers.ProviderId)",
+          "reads providers.ProviderConfig",
+          "reads providers.ProviderConfig (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "observes settings.ApiKey (whole) (uses providers.ProviderId)",
+          "reads conversation.Message (whole)",
+          "reads conversation.Message (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "INV-001",
+        "via": [
+          "INV-001 applies to providers.ProviderConfig.enabled (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "CNV-001/S2",
+          "PRV-002/S4",
+          "SET-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig",
+          "reads providers.ProviderConfig (whole) (uses providers.ProviderId)"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered (uses providers.ProviderId)"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "PROP-202": {
+    "target": "PROP-202",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "SET-001"
+    ],
+    "mustChange": [
+      {
+        "id": "providers.ProviderConfig",
+        "via": [
+          "SET-001 writes providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      },
+      {
+        "id": "settings.MissingApiKey",
+        "via": [
+          "SET-001 emits settings.MissingApiKey"
+        ],
+        "scenarios": [
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "PROP-205": {
+    "target": "PROP-205",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "CNV-001"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.content",
+        "via": [
+          "CNV-001 writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "conversation.ProviderDisabled",
+        "via": [
+          "CNV-001 emits conversation.ProviderDisabled"
+        ],
+        "scenarios": [
+          "CNV-001/S2"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "SET-001",
+        "via": [
+          "observes conversation.ProviderDisabled"
+        ],
+        "scenarios": [
+          "SET-001/S2"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "PROP-206": {
+    "target": "PROP-206",
+    "spec": "spec@3f8f2372",
+    "holds": false,
+    "changed": [
+      "SET-001"
+    ],
+    "mustChange": [
+      {
+        "id": "providers.ProviderConfig",
+        "via": [
+          "SET-001 writes providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "SET-001/S1",
+          "SET-001/S2",
+          "SET-001/S3"
+        ]
+      },
+      {
+        "id": "settings.MissingApiKey",
+        "via": [
+          "SET-001 emits settings.MissingApiKey"
+        ],
+        "scenarios": [
+          "SET-001/S3"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "CNV-001/S1",
+          "CNV-001/S2"
+        ]
+      },
+      {
+        "id": "INV-001",
+        "via": [
+          "INV-001 applies to providers.ProviderConfig.enabled"
+        ],
+        "scenarios": [
+          "CNV-001/S2",
+          "PRV-002/S4",
+          "SET-001/S2"
+        ]
+      },
+      {
+        "id": "PRV-001",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2",
+          "PRV-001/S3"
+        ]
+      },
+      {
+        "id": "PRV-002",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "PRV-003",
+        "via": [
+          "reads providers.ProviderConfig"
+        ],
+        "scenarios": [
+          "PRV-003/S1"
+        ]
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "TASK-101": {
+    "target": "TASK-101",
+    "spec": "spec@3f8f2372",
+    "holds": true,
+    "changed": [
+      "PRV-001",
+      "PRV-002"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.content",
+        "via": [
+          "PRV-001 writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "PRV-001/S1",
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "conversation.Message.meta",
+        "via": [
+          "PRV-002 writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "providers.FallbackTriggered",
+        "via": [
+          "PRV-002 emits providers.FallbackTriggered"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      },
+      {
+        "id": "providers.RateLimited",
+        "via": [
+          "PRV-001 emits providers.RateLimited"
+        ],
+        "scenarios": [
+          "PRV-001/S2"
+        ]
+      },
+      {
+        "id": "providers.StreamReply",
+        "via": [
+          "PRV-001 provides providers.StreamReply"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      },
+      {
+        "id": "providers.TokenStreamed",
+        "via": [
+          "PRV-001 emits providers.TokenStreamed"
+        ],
+        "scenarios": [
+          "PRV-001/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-001",
+        "via": [
+          "calls providers.StreamReply"
+        ],
+        "scenarios": [
+          "CNV-001/S1"
+        ]
+      },
+      {
+        "id": "CNV-002",
+        "via": [
+          "consumes providers.TokenStreamed"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      },
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "TASK-102": {
+    "target": "TASK-102",
+    "spec": "spec@3f8f2372",
+    "holds": true,
+    "changed": [
+      "CNV-002",
+      "PRV-002"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.content",
+        "via": [
+          "CNV-002 writes conversation.Message.content"
+        ],
+        "scenarios": [
+          "CNV-002/S1"
+        ]
+      },
+      {
+        "id": "conversation.Message.meta",
+        "via": [
+          "CNV-002 writes conversation.Message.meta",
+          "PRV-002 writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "CNV-002/S2",
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "providers.FallbackTriggered",
+        "via": [
+          "PRV-002 emits providers.FallbackTriggered"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  },
+  "TASK-103": {
+    "target": "TASK-103",
+    "spec": "spec@3f8f2372",
+    "holds": true,
+    "changed": [
+      "PRV-002"
+    ],
+    "mustChange": [
+      {
+        "id": "conversation.Message.meta",
+        "via": [
+          "PRV-002 writes conversation.Message.meta"
+        ],
+        "scenarios": [
+          "PRV-002/S1",
+          "PRV-002/S2",
+          "PRV-002/S3",
+          "PRV-002/S4"
+        ]
+      },
+      {
+        "id": "providers.FallbackTriggered",
+        "via": [
+          "PRV-002 emits providers.FallbackTriggered"
+        ],
+        "scenarios": [
+          "PRV-002/S1"
+        ]
+      }
+    ],
+    "reverify": [
+      {
+        "id": "CNV-003",
+        "via": [
+          "reads conversation.Message (whole)"
+        ],
+        "scenarios": [
+          "CNV-003/S1",
+          "CNV-003/S2"
+        ]
+      },
+      {
+        "id": "UI-001",
+        "via": [
+          "UI-001 shows providers.FallbackTriggered"
+        ],
+        "scenarios": []
+      }
+    ],
+    "scopeGaps": [],
+    "unresolved": []
+  }
+}

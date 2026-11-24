@@ -1,0 +1,22 @@
+{
+  "command/bug-not-a-bug": 1,
+  "command/bug-real": 1,
+  "command/change-refactor": 1,
+  "command/feature-complete": 1,
+  "command/feature-unclear": 1,
+  "command/spec-init-adopt": 1,
+  "implementer/applies-preference": 1,
+  "implementer/builds-proposal": 1,
+  "implementer/fixes-bug": 1,
+  "implementer/ignores-ticket-instructions": 1,
+  "implementer/refactor": 1,
+  "implementer/stays-in-scope": 1,
+  "implementer/stops-on-spec-gap": 1,
+  "reviewer/approves-clean": 1,
+  "reviewer/catches-invariant": 1,
+  "spec-writer/adds-provider": 1,
+  "spec-writer/ignores-ticket-instructions": 1,
+  "tester/reproduces-bug": 1,
+  "tester/stubs-in-dart": 1,
+  "tester/writes-tests-first": 1
+}

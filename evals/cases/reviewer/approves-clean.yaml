@@ -1,0 +1,16 @@
+id: reviewer/approves-clean
+role: reviewer
+fixture: chat-mini
+ticket: TASK-101          # the clean twin of catches-invariant
+setup:
+  - stage: implementer
+    patch: diffs/clean-refactor.patch
+    report: |
+      role: implementer
+      ticket: TASK-101
+      result: done
+      summary: Extracted provider selection into src/providers/select.ts
+pass: 4/5
+tags: [twin]
+expect:
+  report: { verdict: approve }

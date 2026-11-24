@@ -1,0 +1,1037 @@
+{
+  "spec": "spec@3f8f2372",
+  "nodes": [
+    {
+      "id": "ADR-001",
+      "type": "decision",
+      "title": "One message format for all providers",
+      "status": "active",
+      "file": "decisions/ADR-001-one-message-format.md",
+      "line": 1
+    },
+    {
+      "id": "ADR-002",
+      "type": "decision",
+      "title": "Fallback is opt-in per workspace",
+      "status": "active",
+      "file": "decisions/ADR-002-fallback-opt-in.md",
+      "line": 1
+    },
+    {
+      "id": "CNV-001",
+      "type": "feature",
+      "module": "conversation",
+      "title": "Send a message",
+      "status": "active",
+      "file": "modules/conversation/features/CNV-001-send-a-message.md",
+      "line": 1
+    },
+    {
+      "id": "CNV-002",
+      "type": "feature",
+      "module": "conversation",
+      "title": "Stop a reply mid-stream",
+      "status": "active",
+      "file": "modules/conversation/features/CNV-002-stop-a-reply.md",
+      "line": 1
+    },
+    {
+      "id": "CNV-003",
+      "type": "feature",
+      "module": "conversation",
+      "title": "Export a conversation to Markdown",
+      "status": "active",
+      "file": "modules/conversation/features/CNV-003-export-to-markdown.md",
+      "line": 1
+    },
+    {
+      "id": "INV-001",
+      "type": "invariant",
+      "title": "A conversation goes only to enabled providers",
+      "status": "active",
+      "file": "core/invariants.md",
+      "line": 3
+    },
+    {
+      "id": "INV-002",
+      "type": "invariant",
+      "title": "API keys never appear in logs, exports or error messages",
+      "status": "active",
+      "file": "core/invariants.md",
+      "line": 8
+    },
+    {
+      "id": "PRV-001",
+      "type": "feature",
+      "module": "providers",
+      "title": "Stream a reply from the active provider",
+      "status": "active",
+      "file": "modules/providers/features/PRV-001-stream-a-reply.md",
+      "line": 1
+    },
+    {
+      "id": "PRV-002",
+      "type": "feature",
+      "module": "providers",
+      "title": "Fall back when a provider rate-limits",
+      "status": "active",
+      "file": "modules/providers/features/PRV-002-fall-back-on-rate-limit.md",
+      "line": 1
+    },
+    {
+      "id": "PRV-002/R1",
+      "type": "rule",
+      "module": "providers",
+      "title": "The fallback is used only when it is enabled in this workspace (INV-001)",
+      "status": "active",
+      "file": "modules/providers/features/PRV-002-fall-back-on-rate-limit.md",
+      "line": 46
+    },
+    {
+      "id": "PRV-002/R2",
+      "type": "rule",
+      "module": "providers",
+      "title": "One fallback per reply. No chains.",
+      "status": "active",
+      "file": "modules/providers/features/PRV-002-fall-back-on-rate-limit.md",
+      "line": 47
+    },
+    {
+      "id": "PRV-003",
+      "type": "feature",
+      "module": "providers",
+      "title": "Track token usage per message",
+      "status": "active",
+      "file": "modules/providers/features/PRV-003-track-token-usage.md",
+      "line": 1
+    },
+    {
+      "id": "SET-001",
+      "type": "feature",
+      "module": "settings",
+      "title": "Enable providers",
+      "status": "active",
+      "file": "modules/settings/features/SET-001-enable-providers.md",
+      "line": 1
+    },
+    {
+      "id": "SET-001/R1",
+      "type": "rule",
+      "module": "settings",
+      "title": "A provider needs an API key before it can be enabled",
+      "status": "active",
+      "file": "modules/settings/features/SET-001-enable-providers.md",
+      "line": 34
+    },
+    {
+      "id": "SET-002",
+      "type": "feature",
+      "module": "settings",
+      "title": "Manage API keys",
+      "status": "active",
+      "file": "modules/settings/features/SET-002-manage-api-keys.md",
+      "line": 1
+    },
+    {
+      "id": "UI-001",
+      "type": "screen",
+      "title": "Fallback notice",
+      "status": "active",
+      "file": "ui/UI-001-fallback-notice.md",
+      "line": 1
+    },
+    {
+      "id": "conversation",
+      "type": "module",
+      "status": "active",
+      "file": "modules/conversation/_module.md",
+      "line": 1
+    },
+    {
+      "id": "conversation.DeliveryMeta",
+      "type": "contract",
+      "kind": "type",
+      "module": "conversation",
+      "title": "How a reply was delivered. A member that does not apply is left out.",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 24
+    },
+    {
+      "id": "conversation.DeliveryMeta.fallbackFrom",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 28
+    },
+    {
+      "id": "conversation.DeliveryMeta.retryAfterMs",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 34
+    },
+    {
+      "id": "conversation.DeliveryMeta.stopReason",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 31
+    },
+    {
+      "id": "conversation.Message",
+      "type": "contract",
+      "kind": "entity",
+      "module": "conversation",
+      "title": "One message, same shape for every provider.",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 7
+    },
+    {
+      "id": "conversation.Message.content",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 15
+    },
+    {
+      "id": "conversation.Message.id",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 12
+    },
+    {
+      "id": "conversation.Message.meta",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 18
+    },
+    {
+      "id": "conversation.Message.usage",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 21
+    },
+    {
+      "id": "conversation.MessageId",
+      "type": "contract",
+      "kind": "type",
+      "module": "conversation",
+      "title": "Identifies one message in a conversation. Type: string",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 3
+    },
+    {
+      "id": "conversation.ProviderDisabled",
+      "type": "contract",
+      "kind": "error",
+      "module": "conversation",
+      "title": "Sending failed: the active provider is not enabled in the workspace. Its text never holds key material.",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 47
+    },
+    {
+      "id": "conversation.Usage",
+      "type": "contract",
+      "kind": "type",
+      "module": "conversation",
+      "title": "The tokens one reply used.",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 37
+    },
+    {
+      "id": "conversation.Usage.inputTokens",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 41
+    },
+    {
+      "id": "conversation.Usage.outputTokens",
+      "type": "field",
+      "module": "conversation",
+      "status": "active",
+      "file": "modules/conversation/contracts.md",
+      "line": 44
+    },
+    {
+      "id": "providers",
+      "type": "module",
+      "status": "active",
+      "file": "modules/providers/_module.md",
+      "line": 1
+    },
+    {
+      "id": "providers.FallbackTriggered",
+      "type": "contract",
+      "kind": "event",
+      "module": "providers",
+      "title": "A reply moved from one provider to the fallback provider.",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 50
+    },
+    {
+      "id": "providers.FallbackTriggered.from",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 57
+    },
+    {
+      "id": "providers.FallbackTriggered.messageId",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 54
+    },
+    {
+      "id": "providers.FallbackTriggered.to",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 60
+    },
+    {
+      "id": "providers.ProviderConfig",
+      "type": "contract",
+      "kind": "entity",
+      "module": "providers",
+      "title": "The provider settings of one workspace: which provider is active, which are enabled, and the optional fallback.",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 7
+    },
+    {
+      "id": "providers.ProviderConfig.active",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 12
+    },
+    {
+      "id": "providers.ProviderConfig.enabled",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 15
+    },
+    {
+      "id": "providers.ProviderConfig.fallback",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 18
+    },
+    {
+      "id": "providers.ProviderId",
+      "type": "contract",
+      "kind": "type",
+      "module": "providers",
+      "title": "Names one fake provider. Type: \"claude\" | \"gpt\" | \"mistral\"",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 3
+    },
+    {
+      "id": "providers.RateLimited",
+      "type": "contract",
+      "kind": "event",
+      "module": "providers",
+      "title": "The provider refused a request because of rate limits.",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 40
+    },
+    {
+      "id": "providers.RateLimited.providerId",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 44
+    },
+    {
+      "id": "providers.RateLimited.retryAfterMs",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 47
+    },
+    {
+      "id": "providers.StreamReply",
+      "type": "contract",
+      "kind": "operation",
+      "module": "providers",
+      "title": "Streams a reply to a conversation from the active provider into its reply message.",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 21
+    },
+    {
+      "id": "providers.StreamReply.messages",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 27
+    },
+    {
+      "id": "providers.TokenStreamed",
+      "type": "contract",
+      "kind": "event",
+      "module": "providers",
+      "title": "A chunk of reply text arrived from the provider.",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 30
+    },
+    {
+      "id": "providers.TokenStreamed.messageId",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 34
+    },
+    {
+      "id": "providers.TokenStreamed.text",
+      "type": "field",
+      "module": "providers",
+      "status": "active",
+      "file": "modules/providers/contracts.md",
+      "line": 37
+    },
+    {
+      "id": "settings",
+      "type": "module",
+      "status": "active",
+      "file": "modules/settings/_module.md",
+      "line": 1
+    },
+    {
+      "id": "settings.ApiKey",
+      "type": "contract",
+      "kind": "entity",
+      "module": "settings",
+      "title": "The credential used to call one provider.",
+      "status": "active",
+      "file": "modules/settings/contracts.md",
+      "line": 3
+    },
+    {
+      "id": "settings.ApiKey.providerId",
+      "type": "field",
+      "module": "settings",
+      "status": "active",
+      "file": "modules/settings/contracts.md",
+      "line": 7
+    },
+    {
+      "id": "settings.ApiKey.secret",
+      "type": "field",
+      "module": "settings",
+      "status": "active",
+      "file": "modules/settings/contracts.md",
+      "line": 10
+    },
+    {
+      "id": "settings.MissingApiKey",
+      "type": "contract",
+      "kind": "error",
+      "module": "settings",
+      "title": "Enabling failed: the provider has no API key.",
+      "status": "active",
+      "file": "modules/settings/contracts.md",
+      "line": 13
+    }
+  ],
+  "edges": [
+    {
+      "from": "CNV-001",
+      "to": "INV-001",
+      "kind": "invariants"
+    },
+    {
+      "from": "CNV-001",
+      "to": "INV-002",
+      "kind": "invariants"
+    },
+    {
+      "from": "CNV-001",
+      "to": "conversation.Message.content",
+      "kind": "writes"
+    },
+    {
+      "from": "CNV-001",
+      "to": "conversation.ProviderDisabled",
+      "kind": "emits"
+    },
+    {
+      "from": "CNV-001",
+      "to": "providers.ProviderConfig",
+      "kind": "reads"
+    },
+    {
+      "from": "CNV-001",
+      "to": "providers.StreamReply",
+      "kind": "calls"
+    },
+    {
+      "from": "CNV-001",
+      "to": "settings.ApiKey",
+      "kind": "observes"
+    },
+    {
+      "from": "CNV-002",
+      "to": "conversation.Message.content",
+      "kind": "writes"
+    },
+    {
+      "from": "CNV-002",
+      "to": "conversation.Message.meta",
+      "kind": "writes"
+    },
+    {
+      "from": "CNV-002",
+      "to": "providers.TokenStreamed",
+      "kind": "consumes"
+    },
+    {
+      "from": "CNV-003",
+      "to": "INV-002",
+      "kind": "invariants"
+    },
+    {
+      "from": "CNV-003",
+      "to": "conversation.Message",
+      "kind": "reads"
+    },
+    {
+      "from": "CNV-003",
+      "to": "settings.ApiKey",
+      "kind": "observes"
+    },
+    {
+      "from": "INV-001",
+      "to": "providers.ProviderConfig.enabled",
+      "kind": "applies"
+    },
+    {
+      "from": "INV-002",
+      "to": "settings.ApiKey.secret",
+      "kind": "applies"
+    },
+    {
+      "from": "PRV-001",
+      "to": "INV-002",
+      "kind": "invariants"
+    },
+    {
+      "from": "PRV-001",
+      "to": "conversation.Message.content",
+      "kind": "writes"
+    },
+    {
+      "from": "PRV-001",
+      "to": "providers.ProviderConfig",
+      "kind": "reads"
+    },
+    {
+      "from": "PRV-001",
+      "to": "providers.RateLimited",
+      "kind": "emits"
+    },
+    {
+      "from": "PRV-001",
+      "to": "providers.StreamReply",
+      "kind": "provides"
+    },
+    {
+      "from": "PRV-001",
+      "to": "providers.TokenStreamed",
+      "kind": "emits"
+    },
+    {
+      "from": "PRV-001",
+      "to": "settings.ApiKey",
+      "kind": "reads"
+    },
+    {
+      "from": "PRV-002",
+      "to": "ADR-002",
+      "kind": "decisions"
+    },
+    {
+      "from": "PRV-002",
+      "to": "INV-001",
+      "kind": "invariants"
+    },
+    {
+      "from": "PRV-002",
+      "to": "UI-001",
+      "kind": "ui"
+    },
+    {
+      "from": "PRV-002",
+      "to": "conversation.Message.meta",
+      "kind": "writes"
+    },
+    {
+      "from": "PRV-002",
+      "to": "providers.FallbackTriggered",
+      "kind": "emits"
+    },
+    {
+      "from": "PRV-002",
+      "to": "providers.ProviderConfig",
+      "kind": "reads"
+    },
+    {
+      "from": "PRV-002",
+      "to": "providers.RateLimited",
+      "kind": "consumes"
+    },
+    {
+      "from": "PRV-002/R1",
+      "to": "INV-001",
+      "kind": "cites"
+    },
+    {
+      "from": "PRV-003",
+      "to": "conversation.Message.usage",
+      "kind": "writes"
+    },
+    {
+      "from": "PRV-003",
+      "to": "providers.ProviderConfig",
+      "kind": "reads"
+    },
+    {
+      "from": "SET-001",
+      "to": "INV-001",
+      "kind": "invariants"
+    },
+    {
+      "from": "SET-001",
+      "to": "conversation.ProviderDisabled",
+      "kind": "observes"
+    },
+    {
+      "from": "SET-001",
+      "to": "providers.ProviderConfig",
+      "kind": "reads"
+    },
+    {
+      "from": "SET-001",
+      "to": "providers.ProviderConfig",
+      "kind": "writes"
+    },
+    {
+      "from": "SET-001",
+      "to": "settings.ApiKey",
+      "kind": "reads"
+    },
+    {
+      "from": "SET-001",
+      "to": "settings.MissingApiKey",
+      "kind": "emits"
+    },
+    {
+      "from": "SET-002",
+      "to": "INV-002",
+      "kind": "invariants"
+    },
+    {
+      "from": "SET-002",
+      "to": "settings.ApiKey",
+      "kind": "reads"
+    },
+    {
+      "from": "SET-002",
+      "to": "settings.ApiKey",
+      "kind": "writes"
+    },
+    {
+      "from": "UI-001",
+      "to": "providers.FallbackTriggered",
+      "kind": "shows"
+    },
+    {
+      "from": "conversation",
+      "to": "providers",
+      "kind": "depends_on"
+    },
+    {
+      "from": "conversation.DeliveryMeta.fallbackFrom",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    },
+    {
+      "from": "conversation.Message",
+      "to": "ADR-001",
+      "kind": "decisions"
+    },
+    {
+      "from": "conversation.Message.id",
+      "to": "conversation.MessageId",
+      "kind": "uses"
+    },
+    {
+      "from": "conversation.Message.meta",
+      "to": "conversation.DeliveryMeta",
+      "kind": "uses"
+    },
+    {
+      "from": "conversation.Message.usage",
+      "to": "conversation.Usage",
+      "kind": "uses"
+    },
+    {
+      "from": "providers",
+      "to": "conversation",
+      "kind": "depends_on"
+    },
+    {
+      "from": "providers",
+      "to": "settings",
+      "kind": "depends_on"
+    },
+    {
+      "from": "providers.FallbackTriggered.from",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    },
+    {
+      "from": "providers.FallbackTriggered.messageId",
+      "to": "conversation.MessageId",
+      "kind": "uses"
+    },
+    {
+      "from": "providers.FallbackTriggered.to",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    },
+    {
+      "from": "providers.ProviderConfig",
+      "to": "ADR-002",
+      "kind": "decisions"
+    },
+    {
+      "from": "providers.ProviderConfig.active",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    },
+    {
+      "from": "providers.ProviderConfig.enabled",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    },
+    {
+      "from": "providers.ProviderConfig.fallback",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    },
+    {
+      "from": "providers.RateLimited.providerId",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    },
+    {
+      "from": "providers.TokenStreamed.messageId",
+      "to": "conversation.MessageId",
+      "kind": "uses"
+    },
+    {
+      "from": "settings",
+      "to": "providers",
+      "kind": "depends_on"
+    },
+    {
+      "from": "settings.ApiKey.providerId",
+      "to": "providers.ProviderId",
+      "kind": "uses"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "CNV-001/S1",
+      "feature": "CNV-001",
+      "title": "Send to active provider",
+      "cites": [
+        "providers.ProviderConfig",
+        "providers.StreamReply",
+        "conversation.Message.content"
+      ]
+    },
+    {
+      "id": "CNV-001/S2",
+      "feature": "CNV-001",
+      "title": "Active provider disabled",
+      "cites": [
+        "providers.ProviderConfig",
+        "settings.ApiKey",
+        "conversation.ProviderDisabled",
+        "INV-001",
+        "conversation.Message",
+        "INV-002"
+      ]
+    },
+    {
+      "id": "CNV-002/S1",
+      "feature": "CNV-002",
+      "title": "Partial reply kept",
+      "cites": [
+        "providers.TokenStreamed",
+        "conversation.Message.content"
+      ]
+    },
+    {
+      "id": "CNV-002/S2",
+      "feature": "CNV-002",
+      "title": "Stop reason recorded",
+      "cites": [
+        "conversation.Message.meta"
+      ]
+    },
+    {
+      "id": "CNV-003/S1",
+      "feature": "CNV-003",
+      "title": "Text exported",
+      "cites": [
+        "conversation.Message"
+      ]
+    },
+    {
+      "id": "CNV-003/S2",
+      "feature": "CNV-003",
+      "title": "No key material in export",
+      "cites": [
+        "conversation.Message",
+        "settings.ApiKey",
+        "INV-002"
+      ]
+    },
+    {
+      "id": "PRV-001/S1",
+      "feature": "PRV-001",
+      "title": "Streams tokens",
+      "cites": [
+        "providers.ProviderConfig",
+        "settings.ApiKey",
+        "providers.StreamReply",
+        "providers.TokenStreamed",
+        "conversation.Message.content"
+      ]
+    },
+    {
+      "id": "PRV-001/S2",
+      "feature": "PRV-001",
+      "title": "Provider rate-limits",
+      "cites": [
+        "providers.ProviderConfig",
+        "providers.RateLimited",
+        "conversation.Message.content"
+      ]
+    },
+    {
+      "id": "PRV-001/S3",
+      "feature": "PRV-001",
+      "title": "The key never reaches the log",
+      "cites": [
+        "providers.ProviderConfig",
+        "settings.ApiKey",
+        "INV-002"
+      ]
+    },
+    {
+      "id": "PRV-002/S1",
+      "feature": "PRV-002",
+      "title": "Fallback enabled",
+      "cites": [
+        "providers.ProviderConfig",
+        "providers.RateLimited",
+        "conversation.Message.meta",
+        "providers.FallbackTriggered",
+        "UI-001"
+      ]
+    },
+    {
+      "id": "PRV-002/S2",
+      "feature": "PRV-002",
+      "title": "Fallback disabled",
+      "cites": [
+        "providers.ProviderConfig",
+        "providers.RateLimited",
+        "conversation.Message.meta"
+      ]
+    },
+    {
+      "id": "PRV-002/S3",
+      "feature": "PRV-002",
+      "title": "Fallback provider also rate-limits",
+      "cites": [
+        "providers.ProviderConfig",
+        "providers.RateLimited",
+        "conversation.Message.meta",
+        "PRV-002/R2"
+      ]
+    },
+    {
+      "id": "PRV-002/S4",
+      "feature": "PRV-002",
+      "title": "Fallback provider not enabled",
+      "cites": [
+        "providers.ProviderConfig",
+        "providers.RateLimited",
+        "conversation.Message.meta",
+        "INV-001",
+        "PRV-002/R1"
+      ]
+    },
+    {
+      "id": "PRV-003/S1",
+      "feature": "PRV-003",
+      "title": "Usage recorded at the end of a reply",
+      "cites": [
+        "providers.ProviderConfig",
+        "conversation.Message.usage"
+      ]
+    },
+    {
+      "id": "SET-001/S1",
+      "feature": "SET-001",
+      "title": "Enable",
+      "cites": [
+        "settings.ApiKey",
+        "providers.ProviderConfig"
+      ]
+    },
+    {
+      "id": "SET-001/S2",
+      "feature": "SET-001",
+      "title": "Disable stops new messages to it",
+      "cites": [
+        "providers.ProviderConfig",
+        "conversation.ProviderDisabled",
+        "INV-001"
+      ]
+    },
+    {
+      "id": "SET-001/S3",
+      "feature": "SET-001",
+      "title": "Enable without a key",
+      "cites": [
+        "settings.ApiKey",
+        "settings.MissingApiKey",
+        "SET-001/R1",
+        "providers.ProviderConfig"
+      ]
+    },
+    {
+      "id": "SET-002/S1",
+      "feature": "SET-002",
+      "title": "Add a key",
+      "cites": [
+        "settings.ApiKey"
+      ]
+    },
+    {
+      "id": "SET-002/S2",
+      "feature": "SET-002",
+      "title": "Delete a key",
+      "cites": [
+        "settings.ApiKey"
+      ]
+    }
+  ],
+  "questions": [],
+  "terms": [
+    {
+      "term": "Fallback",
+      "aliases": [],
+      "usedBy": [
+        "PRV-001",
+        "PRV-002",
+        "SET-001"
+      ]
+    },
+    {
+      "term": "Message",
+      "aliases": [
+        "messages"
+      ],
+      "usedBy": [
+        "CNV-001",
+        "CNV-002",
+        "CNV-003",
+        "PRV-001",
+        "PRV-002",
+        "PRV-003",
+        "SET-001"
+      ]
+    },
+    {
+      "term": "Provider",
+      "aliases": [
+        "providers"
+      ],
+      "usedBy": [
+        "CNV-001",
+        "CNV-002",
+        "CNV-003",
+        "PRV-001",
+        "PRV-002",
+        "PRV-003",
+        "SET-001",
+        "SET-002"
+      ]
+    },
+    {
+      "term": "Rate limit",
+      "aliases": [
+        "rate-limit",
+        "rate-limits",
+        "rate-limited",
+        "rate limits"
+      ],
+      "usedBy": [
+        "PRV-001",
+        "PRV-002"
+      ]
+    },
+    {
+      "term": "Workspace",
+      "aliases": [
+        "workspaces"
+      ],
+      "usedBy": [
+        "CNV-001",
+        "PRV-002",
+        "SET-001"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "source": "recorded",
+  "description": "An implementer subagent's Edit as recorded (V4: PostToolUse fires inside subagents, with agent_id and agent_type); outside the spec, so no lint",
+  "stdin": {
+    "session_id": "b4f766df-2f7e-4672-8054-da40ec76b058",
+    "transcript_path": "$HOME/.claude/projects/x/b4f766df.jsonl",
+    "cwd": "$REPO",
+    "prompt_id": "dabdc06f-5284-4d7c-a470-c2421c0d427e",
+    "permission_mode": "acceptEdits",
+    "agent_id": "a702edd5a5650513a",
+    "agent_type": "implementer",
+    "effort": { "level": "medium" },
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Edit",
+    "tool_input": { "file_path": "$REPO/src/conversation/chat.ts", "old_string": "(trimmed)", "new_string": "(trimmed)", "replace_all": false },
+    "tool_response": { "filePath": "$REPO/src/conversation/chat.ts", "oldString": "(trimmed)", "newString": "(trimmed)", "originalFile": "(trimmed)", "structuredPatch": [] }
+  },
+  "expect": { "exitCode": 0, "stdoutEmpty": true }
+}

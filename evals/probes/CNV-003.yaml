@@ -1,0 +1,8 @@
+feature: CNV-003
+probes:
+  - q: The conversation holds "Hi" and "Hello there". What is the Markdown export, exactly?
+    options: ["Hi\\n\\nHello there\\n", "## user\\nHi\\n## assistant\\nHello there\\n", "Hi Hello there"]
+    answer: Hi\n\nHello there\n                                 # CNV-003/S1
+  - q: Does the export contain the API key used for the conversation?
+    options: ["Yes, in a header", "Yes, masked", "No"]
+    answer: "No"                                                 # CNV-003/S2, INV-002

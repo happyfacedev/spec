@@ -1,0 +1,14 @@
+{
+  "source": "documented",
+  "description": "Delegating a ticket the gate refuses is denied, with the blockers as the reason",
+  "stdin": {
+    "session_id": "s1", "cwd": "$REPO", "hook_event_name": "PreToolUse",
+    "tool_name": "Agent",
+    "tool_input": { "description": "Rename providers", "prompt": "PROP-206", "subagent_type": "spec-writer" }
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "hookEventName": "PreToolUse", "permissionDecision": "deny" } },
+    "stdoutIncludes": ["PROP-206 is not ready", "question PROP-206#Q1: Do renamed providers keep their usage history?"]
+  }
+}

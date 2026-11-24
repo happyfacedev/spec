@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L018",
+    "severity": "error",
+    "file": "core/glossary.md",
+    "line": 9,
+    "id": "Order",
+    "message": "\"Widgets\" is already defined by \"Widget\"",
+    "fix": "define each term and alias once; merge the entries or drop the alias"
+  }
+]

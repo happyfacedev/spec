@@ -1,0 +1,22 @@
+{
+  "source": "recorded",
+  "description": "The overseer's Agent call exactly as recorded (V1: tool Agent; V2: description, prompt, subagent_type)",
+  "stdin": {
+    "session_id": "b4f766df-2f7e-4672-8054-da40ec76b058",
+    "transcript_path": "$HOME/.claude/projects/x/b4f766df.jsonl",
+    "cwd": "$REPO",
+    "prompt_id": "dabdc06f-5284-4d7c-a470-c2421c0d427e",
+    "permission_mode": "acceptEdits",
+    "agent_type": "overseer",
+    "effort": { "level": "medium" },
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Agent",
+    "tool_input": { "description": "Implement TASK-101", "prompt": "TASK-101", "subagent_type": "implementer" },
+    "tool_use_id": "toolu_01Xqq56ZAi3DAyzeg5xq2Fv7"
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "hookSpecificOutput": { "hookEventName": "PreToolUse", "permissionDecision": "allow", "updatedInput": { "subagent_type": "implementer" } } },
+    "stdoutIncludes": ["\"prompt\":\"TASK-101\\n\\n# Brief · implementer · TASK-101 · spec@"]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "source": "recorded",
+  "description": "SubagentStop as recorded (V5: agent_type, agent_id, last_assistant_message, agent_transcript_path). In this fresh copy TASK-101 is not in that stage, so the report is sent back",
+  "stdin": {
+    "session_id": "b4f766df-2f7e-4672-8054-da40ec76b058",
+    "transcript_path": "$HOME/.claude/projects/x/b4f766df.jsonl",
+    "cwd": "$REPO",
+    "prompt_id": "dabdc06f-5284-4d7c-a470-c2421c0d427e",
+    "permission_mode": "acceptEdits",
+    "agent_id": "a702edd5a5650513a",
+    "agent_type": "implementer",
+    "effort": { "level": "medium" },
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false,
+    "agent_transcript_path": "$HOME/.claude/projects/x/b4f766df/subagents/agent-a702edd5a5650513a.jsonl",
+    "last_assistant_message": "The refactor is in place and all 18 tests pass.\n\n```report\nrole: implementer\nticket: TASK-101\nresult: done\nsummary: Moved provider selection (active enabled check, fallback pick, next untried provider) into src/providers/selection.ts; chat.ts and fallback.ts call it; all 18 spec tests pass; typecheck not run (Bash denied).\nchanged: []\nassumed: []\nblockers: []\n```",
+    "background_tasks": [{ "id": "a702edd5a5650513a", "type": "subagent", "status": "running", "description": "Implement TASK-101", "agent_type": "implementer" }],
+    "session_crons": []
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdout": { "decision": "block" },
+    "stdoutIncludes": ["TASK-101 is not in stage implementer"]
+  }
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L025",
+    "severity": "warning",
+    "file": "core/invariants.md",
+    "line": 7,
+    "id": "INV-002",
+    "message": "no scenario shows INV-002",
+    "fix": "cite it, (INV-002), in a step that checks it, or in a rule a scenario shows; if no scenario can, say how it is checked: \"Shown by: <benchmark, review, …>\""
+  }
+]

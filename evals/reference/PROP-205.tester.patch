@@ -1,0 +1,21 @@
+--- a/tests/CNV-001.test.ts
++++ b/tests/CNV-001.test.ts
+@@ -1,5 +1,5 @@
+ import { expect, it } from 'vitest';
+-import { setup } from './helpers';
++import { ok, setup } from './helpers';
+ 
+ it('CNV-001/S1 Send to active provider', () => {
+   const { app, providers } = setup();
+@@ -19,3 +19,11 @@
+   expect(app.messages).toEqual([]);
+   expect(result.error.message).not.toContain('sk-claude-secret');
+ });
++
++it('CNV-001/S3 Copy a message', () => {
++  const { app } = setup();
++  ok(app.send('Hello'));
++  const message = app.messages.find((m) => m.content === 'Hello');
++  expect(message).toBeDefined();
++  expect(app.copyMessage(message?.id ?? '')).toBe('Hello');
++});

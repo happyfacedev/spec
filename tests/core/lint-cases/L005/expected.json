@@ -1,0 +1,20 @@
+[
+  {
+    "rule": "L005",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 14,
+    "id": "BET-001",
+    "message": "active BET-001 reads alpha.Widget.size, which is removed",
+    "fix": "point to alpha.Widget.name instead"
+  },
+  {
+    "rule": "L005",
+    "severity": "error",
+    "file": "modules/beta/features/BET-001-order-a-widget.md",
+    "line": 14,
+    "id": "BET-001/S1",
+    "message": "active BET-001/S1 cites alpha.Widget.size, which is removed",
+    "fix": "point to alpha.Widget.name instead"
+  }
+]

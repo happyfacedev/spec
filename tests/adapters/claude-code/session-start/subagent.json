@@ -1,0 +1,16 @@
+{
+  "source": "documented",
+  "description": "Astro subagents do not get the main session context",
+  "stdin": {
+    "session_id": "astro-sub",
+    "cwd": "$REPO",
+    "agent": "subagent",
+    "run_id": "run-1",
+    "hook_event_name": "SessionStart",
+    "source": "startup"
+  },
+  "expect": {
+    "exitCode": 0,
+    "stdoutEmpty": true
+  }
+}

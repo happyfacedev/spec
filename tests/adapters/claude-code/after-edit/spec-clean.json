@@ -1,0 +1,11 @@
+{
+  "source": "documented",
+  "description": "An edit that leaves the spec clean passes",
+  "stdin": {
+    "session_id": "s1", "cwd": "$REPO", "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": { "file_path": "$REPO/spec/core/glossary.md", "content": "unchanged" },
+    "tool_response": { "filePath": "$REPO/spec/core/glossary.md", "success": true }
+  },
+  "expect": { "exitCode": 0, "stdoutEmpty": true }
+}

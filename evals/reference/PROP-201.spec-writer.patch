@@ -1,0 +1,42 @@
+--- a/spec/modules/providers/contracts.md
++++ b/spec/modules/providers/contracts.md
+@@ -2,7 +2,7 @@
+ 
+ ### providers.ProviderId
+ Kind: type · Status: active
+-Names one fake provider. Type: "claude" | "gpt" | "mistral"
++Names one fake provider. Type: "claude" | "gpt" | "mistral" | "gemini"
+ 
+ ### providers.ProviderConfig
+ Kind: entity · Status: active
+--- a/spec/modules/providers/features/PRV-001-stream-a-reply.md
++++ b/spec/modules/providers/features/PRV-001-stream-a-reply.md
+@@ -33,6 +33,13 @@
+ When the user sends a message and "claude" streams a reply
+ Then no line of the app log contains "sk-claude-secret" (INV-002)
+ 
++### S4: Streams from gemini
++Given providers.ProviderConfig has "gemini" as the active and enabled provider
++And settings.ApiKey for "gemini" is "sk-gemini-secret"
++When the user sends a message and "gemini" streams "Hi"
++Then "gemini" is called with the key "sk-gemini-secret"
++And the reply's conversation.Message.content is "Hi"
++
+ ## Rules
+ None
+ 
+--- a/spec/modules/settings/features/SET-001-enable-providers.md
++++ b/spec/modules/settings/features/SET-001-enable-providers.md
+@@ -32,6 +32,12 @@
+ Then enabling fails with settings.MissingApiKey (R1)
+ And providers.ProviderConfig does not list "gpt" as enabled
+ 
++### S4: Enable gemini
++Given settings.ApiKey exists for "gemini"
++And providers.ProviderConfig does not list "gemini" as enabled
++When the user enables "gemini"
++Then providers.ProviderConfig lists "gemini" as enabled
++
+ ## Rules
+ - R1: A provider needs an API key before it can be enabled
+ 

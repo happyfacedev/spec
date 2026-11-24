@@ -1,0 +1,11 @@
+[
+  {
+    "rule": "L003",
+    "severity": "error",
+    "file": "modules/alpha/contracts/extra.md",
+    "line": 3,
+    "id": "alpha.WidgetMade",
+    "message": "alpha.WidgetMade is already defined in modules/alpha/contracts.md:13",
+    "fix": "IDs are never reused; give this unit a new ID"
+  }
+]
